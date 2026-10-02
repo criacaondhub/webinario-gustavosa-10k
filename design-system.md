@@ -18,7 +18,7 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 | `heading` | `#0E2A47` | `text-heading` | Títulos (`h1`, `h2`), nome, ênfases em negrito |
 | `muted` | `#0E2A47` | `text-muted` | Texto secundário (faixa de data, rótulos) |
 | `accent` | `#F2A541` | `bg-accent` / `text-accent` | CTAs, destaques do H1, ícones |
-| `accent-hover` | `#B6751F` | `bg-accent-hover` | Hover dos CTAs |
+| `accent-hover` | `#B6751F` | `bg-accent-hover` / `text-accent-hover` | Ícones da faixa do evento e ponto de "Vagas limitadas" (o hover do CTA é escala, não cor) |
 | `secondary` | `#3D6E9E` | `bg-secondary` | Azul claro dos marcadores (círculo do check, check em branco — 5,35:1). Definido pelo usuário ("azul mais claro") |
 
 > Hierarquia entre `text`, `heading` e `muted` (todos navy) vem de **tamanho e peso**, não de cor.
@@ -32,7 +32,7 @@ Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores 
 |---|---|---|
 | `heading` sobre `background` | 13,6:1 | ✅ AA/AAA |
 | `heading` sobre `accent` (CTA) | 7,1:1 | ✅ AA |
-| `heading` sobre `accent-hover` (CTA hover) | 3,85:1 | ✅ só texto grande → CTA em 20px/700 |
+| `heading` sobre `accent-hover` | 3,85:1 | ✅ só texto grande |
 | `accent` sobre `background` | 1,91:1 | ❌ não usar como texto |
 | `accent-hover` sobre `background` | 3,53:1 | ⚠️ só texto grande / ícones |
 | `text` (navy) sobre `background` | 13,6:1 | ✅ AA/AAA |
@@ -82,14 +82,14 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 | Token | Tamanho | Line-height | Peso | Uso |
 |---|---|---|---|---|
-| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 1.0 | 400 (trechos destacados 700) | H1 do Hero |
+| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 1.1 | 400 (trechos destacados 700) | H1 do Hero |
 | `text-headline` | `clamp(1.875rem, 1.4rem + 2vw, 3rem)` | 1.1 | 700 | Nome "Dr. Gustavo Sá" |
 | `text-statement` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem)` | 1.3 | 400 / 700 | Fecho da dobra 2 |
 | `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400 | H2 do Hero |
 | `text-body` | `1.0625rem` (17px) | 1.6 | 400 | Bio, itens da lista |
 | `text-meta` | `0.9375rem` (15px) | 1.5 | 400 (700 em "Vagas limitadas") | Faixa de data (caixa normal, `futura-pt`), "Vagas limitadas", rodapé |
 | `text-label` | `0.875rem` (14px) | 1.2 | 700 `futura-pt`, caixa-alta, `tracking-label` (0.04em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |
-| `text-cta` | `1.1875rem` (19px) | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões (≥18,66px/700 = texto grande para WCAG, necessário no hover) |
+| `text-cta` | `1.1875rem` (19px) | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões |
 
 ---
 
@@ -110,7 +110,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 - **Rodapé:** `lg:grid-cols-3` — logo · crédito · data/hora/plataforma. Centralizado no mobile.
 
 ### Componentes
-- **CTA:** altura mínima 56px, padding `px-7`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`; "Vagas limitadas" ao lado do botão (abaixo dele no mobile), hover `bg-accent-hover` + ícone de seta com leve deslocamento. Touch target ≥ 44px.
+- **CTA:** altura mínima 56px, padding `px-7`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`; "Vagas limitadas" ao lado do botão (abaixo dele no mobile), hover com **escala** (`scale 1.04`, `active` 0.98, 200ms; desligado com `prefers-reduced-motion`) + ícone de seta com leve deslocamento — sem troca de cor. Touch target ≥ 44px.
 - **Raio de borda:** cartões glass `rounded-2xl` (16px). Imagens: **sem** raio.
 
 ---

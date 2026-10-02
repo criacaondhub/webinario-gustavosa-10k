@@ -25,7 +25,6 @@ export function Hero() {
     <section className="relative isolate overflow-x-clip">
       {/* Brilhos de fundo — dão profundidade ao glassmorphism */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-40 -left-40 size-[36rem] rounded-full bg-accent/25 blur-3xl" />
         <div className="absolute top-1/2 left-1/3 size-[28rem] rounded-full bg-heading/[0.06] blur-3xl" />
       </div>
 

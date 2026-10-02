@@ -71,7 +71,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="flex justify-center lg:justify-start">
-            <CtaButton label={hero.cta} lines={hero.ctaLines} />
+            <CtaButton label={hero.cta} />
           </motion.div>
 
         </div>

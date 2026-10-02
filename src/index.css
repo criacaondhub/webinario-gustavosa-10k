@@ -37,13 +37,13 @@
   --text-meta--line-height: 1.5;
   --text-label: 0.875rem;
   --text-label--line-height: 1.2;
-  --text-cta: 1.1875rem;
+  --text-cta: 1rem;
   --text-cta--line-height: 1.2;
 
   --tracking-label: 0.04em;
 
   /* Espaçamentos e grid */
-  --container-page: 1440px;
+  --container-page: 1280px;
   /* Escala replicada da LP de referência (escola.endometriose.med.br/webinario) */
   --spacing-xs: 8px;
   --spacing-sm: 12px;

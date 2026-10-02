@@ -67,7 +67,6 @@ export const CONTENT = {
     intro:
       'Numa sala fechada e ao vivo, eu mostro de onde tiro as pautas de todo dia, quais formatos uso e como você replica isso no seu perfil a partir do dia seguinte.',
     cta: 'QUERO ENTRAR NO GRUPO DO WEBINÁRIO',
-    ctaLines: ['QUERO ENTRAR NO GRUPO', 'DO WEBINÁRIO'],
     portraitNote: { name: 'Dr. Gustavo Sá', role: 'Nutrólogo', reach: '280 mil seguidores' },
   },
 } as const

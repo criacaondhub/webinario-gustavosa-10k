@@ -89,13 +89,13 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | `text-body` | `1.0625rem` (17px) | 1.6 | 400 | Bio, itens da lista |
 | `text-meta` | `0.9375rem` (15px) | 1.5 | 400 (700 em "Vagas limitadas") | Faixa de data (caixa normal, `futura-pt`), "Vagas limitadas", rodapé |
 | `text-label` | `0.875rem` (14px) | 1.2 | 700 `futura-pt`, caixa-alta, `tracking-label` (0.04em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |
-| `text-cta` | `1.1875rem` (19px) | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões |
+| `text-cta` | `1rem` (16px); mobile `clamp(0.75rem, 3.4vw, 1rem)` | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões — **sempre numa linha só** (`whitespace-nowrap`), sem quebra (decisão do usuário) |
 
 ---
 
 ## 3. Espaçamentos e Grid
 
-**Regra de espaçamento replicada integralmente da LP de referência** (escola.endometriose.med.br/webinario), por decisão do usuário. Container mantido em 1440px (regra do projeto; a referência usa 1280px).
+**Regra de espaçamento replicada integralmente da LP de referência** (escola.endometriose.med.br/webinario), por decisão do usuário. Container de **1280px**, igual à referência (decisão do usuário, substitui os 1440px do Agente 1).
 
 ### Tokens
 
@@ -109,7 +109,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | `gutter` / `gutter-lg` | 20px / 32px | `px-gutter lg:px-gutter-lg` |
 | `section` / `section-lg` | 40px / 80px | `py-section lg:py-section-lg` |
 | `grid` / `grid-lg` | 24px / 32px | `gap-grid lg:gap-grid-lg` |
-| Container | 1440px | `max-w-page mx-auto` |
+| Container | 1280px | `max-w-page mx-auto` |
 
 ### Ritmo da primeira dobra (idêntico à referência)
 
@@ -120,7 +120,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | Faixa do evento | `mt-md` · `mb-[clamp(2rem,4vw,3rem)]` · `py-sm` · itens `gap-x-sm` (desktop `gap-x-xl`) · ícone `gap-xs` |
 | H1 | `mb-lg` |
 | Texto de apoio | `mb-[clamp(1.75rem,3vw,2.5rem)]` · `max-w-[54ch]` |
-| CTA | `min-h-[60px]` · `max-w-[26rem]` · `p-md` (desktop `px-lg`) · `gap-md` |
+| CTA | `w-full max-w-[27rem]` · `justify-between` (texto à esquerda, seta na ponta direita) · `min-h-[60px]` · `py-md` · mobile `px-sm gap-sm`, desktop `px-lg gap-md` |
 | Nota sobre a foto | `bottom-xl left-xl` · `px-lg py-md` |
 
 ### Grids das seções (desktop)

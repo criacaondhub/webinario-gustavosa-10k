@@ -40,6 +40,7 @@ Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores 
 **Regras de uso**
 - Texto dos botões sobre `accent`: `heading` (`#0E2A47`). Nunca branco sobre `accent`.
 - `accent` só como **fundo** (CTAs) ou em elementos decorativos/ícones com `aria-hidden`.
+- Seleção de texto (`::selection`): fundo `accent` com texto `heading` (7,1:1) em toda a página. Definido pelo usuário.
 - Bordas finas de divisão (faixa de data, linha do fecho): `heading` com 15% de opacidade → `border-heading/15`.
 
 ### Surface e Border — Glassmorphism

@@ -79,4 +79,8 @@ export const CONTENT = {
     closing: 'O que ele faz no próprio perfil todo dia, aberto pra você nesse webinário.',
     cta: 'QUERO MINHA VAGA NA SALA',
   },
+  footer: {
+    info: `${CONFIG.EVENT_DATE} · ${CONFIG.EVENT_TIME} · ${CONFIG.EVENT_PLATFORM}`,
+    credit: { prefix: 'Desenvolvido por: ', name: 'Nova Dimensão', url: 'https://med.novadimensaohub.com.br' },
+  },
 } as const

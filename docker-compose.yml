@@ -5,7 +5,7 @@ services:
     image: gustavosa-protocolo-10k:latest
     build: .
     networks:
-      - ⚠️NOME_REDE
+      - GustavoSaNet
     deploy:
       mode: replicated
       replicas: 1
@@ -23,6 +23,6 @@ services:
         - traefik.http.services.gustavosa-protocolo-10k.loadbalancer.passHostHeader=true
 
 networks:
-  ⚠️NOME_REDE:
-    name: ⚠️NOME_REDE
+  GustavoSaNet:
+    name: GustavoSaNet
     external: true

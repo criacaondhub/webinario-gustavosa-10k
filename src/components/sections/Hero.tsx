@@ -3,7 +3,6 @@ import { TbCalendarEvent, TbClock, TbVideo } from 'react-icons/tb'
 import { ASSETS, CONTENT } from '@/config/content'
 import { CtaButton } from '@/components/ui/CtaButton'
 import { Logo } from '@/components/ui/Logo'
-import { MediaFrame } from '@/components/ui/MediaFrame'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 const ICONS = { calendar: TbCalendarEvent, clock: TbClock, video: TbVideo }
@@ -23,25 +22,33 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-x-clip">
-      {/* Brilhos de fundo — dão profundidade ao glassmorphism */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/3 size-[28rem] rounded-full bg-heading/[0.06] blur-3xl" />
+      {/* Banner full: fundo da seção no desktop; no mobile vira imagem no topo com fade para o fundo */}
+      <div className="relative xl:absolute xl:inset-0 xl:-z-10">
+        <img
+          src={ASSETS.banner.file}
+          width={ASSETS.banner.width}
+          height={ASSETS.banner.height}
+          alt={ASSETS.banner.alt}
+          fetchPriority="high"
+          className="block aspect-square w-full object-cover object-[95%_top] sm:aspect-[16/9] sm:object-[85%_center] xl:aspect-auto xl:size-full"
+        />
+        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-background to-transparent xl:hidden" />
       </div>
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="shown"
-        className="mx-auto grid w-full max-w-page lg:min-h-screen lg:grid-cols-[1.12fr_0.88fr]"
+        className="mx-auto grid w-full max-w-page xl:min-h-screen xl:grid-cols-[1.12fr_0.88fr]"
       >
-        <div className="min-w-0 px-gutter pt-[clamp(1.75rem,4vw,3rem)] pb-section text-center lg:pt-[clamp(2.5rem,5vw,4.5rem)] lg:pr-[clamp(2rem,4vw,3.5rem)] lg:pb-section-lg lg:pl-gutter-lg lg:text-left">
+        <div className="min-w-0 px-gutter pt-[clamp(1.75rem,4vw,3rem)] pb-section text-center xl:pt-[clamp(2.5rem,5vw,4.5rem)] xl:pr-[clamp(2rem,4vw,3.5rem)] xl:pb-section-lg xl:pl-gutter-lg xl:text-left">
           <motion.div variants={item}>
-            <Logo className="mx-auto w-[clamp(11.5rem,26vw,20rem)] lg:mx-0" />
+            <Logo className="mx-auto w-[clamp(11.5rem,26vw,20rem)] xl:mx-0" />
           </motion.div>
 
           <motion.ul
             variants={item}
-            className="mt-md mb-[clamp(2rem,4vw,3rem)] flex flex-wrap items-center justify-center gap-x-sm gap-y-xs border-y border-heading/15 py-sm text-meta lg:justify-start lg:gap-x-xl"
+            className="mt-md mb-[clamp(2rem,4vw,3rem)] flex flex-wrap items-center justify-center gap-x-sm gap-y-xs border-y border-heading/15 py-sm text-meta xl:justify-start xl:gap-x-xl"
           >
             {hero.date.map(({ icon, text }) => {
               const Icon = ICONS[icon]
@@ -66,15 +73,15 @@ export function Hero() {
             )}
           </motion.h1>
 
-          <motion.p variants={item} className="mx-auto mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[54ch] text-lead tracking-[-0.02em] text-pretty lg:mx-0">
+          <motion.p variants={item} className="mx-auto mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[54ch] text-lead tracking-[-0.02em] text-pretty xl:mx-0">
             {hero.intro}
           </motion.p>
 
-          <motion.div variants={item} className="flex justify-center lg:justify-start">
+          <motion.div variants={item} className="flex justify-center xl:justify-start">
             <CtaButton label={hero.cta} />
           </motion.div>
 
-          <motion.p variants={item} className="mx-auto mt-md max-w-[48ch] text-meta text-pretty lg:mx-0">
+          <motion.p variants={item} className="mx-auto mt-md max-w-[48ch] text-meta text-pretty xl:mx-0">
             {hero.micro[0]}
             <br />
             {hero.micro[1]}
@@ -84,16 +91,14 @@ export function Hero() {
 
         <motion.div
           variants={item}
-          className="hidden lg:grid lg:min-h-0 lg:min-w-0 lg:w-[calc(100%+max(0px,(100vw-var(--container-page))/2))]"
+          className="relative hidden xl:block"
         >
-          <MediaFrame asset={ASSETS.portrait} priority className="h-full">
-            <div className="glass absolute bottom-xl left-xl rounded-2xl px-lg py-md">
-              <p className="text-body font-bold text-heading">{hero.portraitNote.name}</p>
-              <p className="text-meta">
-                {hero.portraitNote.role} · {hero.portraitNote.reach}
-              </p>
-            </div>
-          </MediaFrame>
+          <div className="glass absolute bottom-xl left-0 rounded-2xl px-lg py-md">
+            <p className="text-body font-bold text-heading">{hero.portraitNote.name}</p>
+            <p className="text-meta">
+              {hero.portraitNote.role} · {hero.portraitNote.reach}
+            </p>
+          </div>
         </motion.div>
       </motion.div>
     </section>

@@ -126,7 +126,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 ### Grids das seções (desktop)
 
-- **Hero:** `lg:grid-cols-[1.12fr_0.88fr]` — texto à esquerda, retrato à direita; `lg:min-h-screen`. A coluna da foto encosta na borda direita da viewport (sangra para fora do container). No mobile a foto é **ocultada** (igual à referência) e o texto fica centralizado.
+- **Hero:** banner full de fundo a partir de `xl` (1280px), com `xl:grid-cols-[1.12fr_0.88fr]` e `xl:min-h-screen` — texto na coluna esquerda sobre a área clara do banner. Abaixo de 1280px o banner fica no topo e o texto empilhado/centralizado (em 1024px não há espaço lateral sem cobrir o rosto).
 - **Dobra 2:** `lg:grid-cols-[0.8fr_1.2fr]` — foto à esquerda (sangra até a borda esquerda), texto à direita. No mobile a foto aparece no topo, em largura total.
 - **Dobra 2 (`About`):** fundo `background-section`; rótulo "QUEM VAI TE MOSTRAR ISSO:" em `text-statement` 400; nome em `text-headline` 700 (`mt-xs`); bio `text-body` `max-w-[62ch]` `mb-md`; fecho `text-statement` com linha acima (`border-t`, `pt-lg`, `max-w-[46ch]`); CTA. Coluna de texto `py-section lg:py-section-lg` · `lg:pl-[clamp(2rem,4vw,3.5rem)]` · `lg:pr-gutter-lg`. Foto `aspect-[6/5] sm:aspect-[16/9]`, altura total no desktop.
 - **Rodapé (`Footer`):** fundo `heading` (navy), texto branco 75%; `lg:grid-cols-3` — logo negativo (`w-[11.5rem]`) · "Desenvolvido por: **Nova Dimensão**" (link em `accent`, 7,1:1 sobre navy; hover branco sublinhado) · data · hora · plataforma. `py-section`, `gap-lg` (`lg:gap-xl`), centralizado no mobile.
@@ -145,7 +145,7 @@ Arquivos em `public/assets/`. Referenciar sem barra inicial: `src="assets/arquiv
 |---|---|---|---|---|
 | `logo-positivo.svg` | Hero (topo) | Acima da faixa de data, alinhado à esquerda no desktop e centralizado no mobile; largura `clamp(11.5rem, 26vw, 20rem)` | vetor | ✅ |
 | `logo-negativo.svg` | Rodapé | Coluna esquerda, `w-[11.5rem]` | vetor | ✅ |
-| `gustavo-retrato.webp` | Hero (coluna direita) | `object-cover object-top`, altura total da seção, sangra até a borda direita; nota glass sobreposta no canto inferior: "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" | 1200 × 1600 px (3:4) | ⚠️ PENDENTE — placeholder |
+| `banner-hero.webp` | Hero (fundo) | **Banner full** fornecido pelo cliente (2304×1296, já otimizado). ≥1280px (`xl`): fundo da seção inteira (`absolute inset-0`, `object-cover`), texto sobreposto no lado claro à esquerda, nota glass "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" na base da coluna direita. <1280px: imagem no topo (mobile `aspect-square object-[95%_top]`; `sm` `aspect-[16/9]`) com fade inferior para `background`, conteúdo empilhado e centralizado abaixo | 2304 × 1296 px (16:9) | ✅ |
 | `gustavo-ambiente.webp` | Dobra 2 (coluna esquerda) | `object-cover object-top`, altura total da seção, sangra até a borda esquerda | 1200 × 1400 px (6:7) | ⚠️ PENDENTE — placeholder |
 
 **Regras**

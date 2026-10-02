@@ -30,12 +30,11 @@ export const ASSETS = {
     width: 842.81,
     height: 149.71,
   },
-  portrait: {
-    file: 'assets/gustavo-retrato.webp',
-    alt: 'Dr. Gustavo Sá',
-    label: 'Retrato do especialista',
-    size: '1200 × 1600 px',
-    ratio: '3:4 (vertical)',
+  banner: {
+    file: 'assets/banner-hero.webp', // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
+    width: 2304,
+    height: 1296,
+    alt: 'Dr. Gustavo Sá sorrindo, de braços cruzados',
   },
   speaker: {
     file: 'assets/gustavo-ambiente.webp',

@@ -24,7 +24,7 @@
   --font-sans: "futura-pt", ui-sans-serif, system-ui, sans-serif;
 
   --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
-  --text-display--line-height: 0.85;
+  --text-display--line-height: 1;
   --text-headline: clamp(1.875rem, 1.4rem + 2vw, 3rem);
   --text-headline--line-height: 1.1;
   --text-statement: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);

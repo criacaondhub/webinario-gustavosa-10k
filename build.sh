@@ -1,0 +1,1 @@
+git pull origin main && docker build -t gustavosa-protocolo-10k:latest . && docker stack deploy -c docker-compose.yml gustavosa-protocolo-10k && docker service update --image gustavosa-protocolo-10k:latest --force gustavosa-protocolo-10k_gustavosa-protocolo-10k

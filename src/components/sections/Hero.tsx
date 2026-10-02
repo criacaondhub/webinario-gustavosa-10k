@@ -72,7 +72,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="glass mx-auto mb-10 max-w-2xl rounded-2xl p-6 text-left lg:mx-0 lg:mb-8 short:mb-6 short:p-5">
-            <p className="mb-4 lg:mb-3 font-condensed text-label font-bold tracking-label uppercase">{hero.learnTitle}</p>
+            <p className="mb-4 lg:mb-3 text-label font-bold tracking-label uppercase">{hero.learnTitle}</p>
             <ul className="grid gap-3 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4">
               {hero.learn.map((point) => (
                 <li key={point} className="flex gap-3 text-body lg:leading-snug">

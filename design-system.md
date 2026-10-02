@@ -72,8 +72,9 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 | Família | Token | Classe | Pesos disponíveis | Uso |
 |---|---|---|---|---|
-| `futura-pt` | `--font-sans` | `font-sans` (padrão do `body`) | 400, 700 (+ itálico) | Títulos, texto corrido |
-| `futura-pt-condensed` | `--font-condensed` | `font-condensed` | 400, 500, 700, 800 (+ itálico) | Só rótulos curtos em caixa-alta (ex.: "O QUE VOCÊ VAI VER:"). **Não usar** em CTAs nem na faixa de data (decisão do usuário) |
+| `futura-pt` | `--font-sans` | `font-sans` (padrão do `body`) | 400, 700 (+ itálico) | **Família única da página**: títulos, textos, rótulos, CTAs |
+
+> `futura-pt-condensed` vem no kit, mas **não é usada** (decisão do usuário: padronizar tudo em `futura-pt`).
 
 > Não usar `font-medium`/`font-semibold` com `font-sans` — o kit só tem 400 e 700 para `futura-pt` (o navegador sintetizaria).
 
@@ -87,7 +88,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400 | H2 do Hero |
 | `text-body` | `1.0625rem` (17px) | 1.6 | 400 | Bio, itens da lista |
 | `text-meta` | `0.9375rem` (15px) | 1.5 | 400 (700 em "Vagas limitadas") | Faixa de data (caixa normal, `futura-pt`), "Vagas limitadas", rodapé |
-| `text-label` | `0.875rem` (14px) | 1.2 | 700 condensed, caixa-alta, `tracking-label` (0.08em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |
+| `text-label` | `0.875rem` (14px) | 1.2 | 700 `futura-pt`, caixa-alta, `tracking-label` (0.04em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |
 | `text-cta` | `1.1875rem` (19px) | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões (≥18,66px/700 = texto grande para WCAG, necessário no hover) |
 
 ---

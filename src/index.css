@@ -24,7 +24,6 @@
 
   /* Tipografia — Futura PT (Adobe Fonts) */
   --font-sans: "futura-pt", ui-sans-serif, system-ui, sans-serif;
-  --font-condensed: "futura-pt-condensed", "futura-pt", ui-sans-serif, sans-serif;
 
   --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
   --text-display--line-height: 1;
@@ -43,7 +42,7 @@
   --text-cta: 1.1875rem;
   --text-cta--line-height: 1.2;
 
-  --tracking-label: 0.08em;
+  --tracking-label: 0.04em;
 
   /* Espaçamentos e grid */
   --container-page: 1440px;

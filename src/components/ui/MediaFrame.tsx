@@ -30,7 +30,7 @@ export function MediaFrame({ asset, className, priority = false, children }: Med
       {!loaded && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
           <TbPhoto aria-hidden="true" className="size-11 stroke-1 text-heading/50" />
-          <span className="font-condensed text-label font-medium uppercase tracking-label">{asset.label}</span>
+          <span className="text-label font-bold uppercase tracking-label">{asset.label}</span>
           <span className="flex flex-col gap-1 text-meta text-heading/80">
             <span className="font-bold">{asset.file.replace('assets/', '')}</span>
             <span>

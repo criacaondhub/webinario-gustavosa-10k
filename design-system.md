@@ -120,6 +120,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | Faixa do evento | `mt-md` · `mb-[clamp(2rem,4vw,3rem)]` · `py-sm` · itens `gap-x-sm` (desktop `gap-x-xl`) · ícone `gap-xs` |
 | H1 | `mb-lg` |
 | Texto de apoio | `mb-[clamp(1.75rem,3vw,2.5rem)]` · `max-w-[54ch]` |
+| Microcopy abaixo do CTA | `mt-md` · `max-w-[48ch]` · `text-meta` · 2 linhas |
 | CTA | `w-full max-w-[27rem]` · `justify-between` (texto à esquerda, seta na ponta direita) · `min-h-[60px]` · `py-md` · mobile `px-sm gap-sm`, desktop `px-lg gap-md` |
 | Nota sobre a foto | `bottom-xl left-xl` · `px-lg py-md` |
 

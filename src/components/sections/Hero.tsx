@@ -74,6 +74,12 @@ export function Hero() {
             <CtaButton label={hero.cta} />
           </motion.div>
 
+          <motion.p variants={item} className="mx-auto mt-md max-w-[48ch] text-meta text-pretty lg:mx-0">
+            {hero.micro[0]}
+            <br />
+            {hero.micro[1]}
+          </motion.p>
+
         </div>
 
         <motion.div

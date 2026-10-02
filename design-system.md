@@ -61,7 +61,7 @@ backdrop-filter: blur(16px) saturate(140%);
 border: 1px solid var(--color-border);
 box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.6) inset, 0 12px 32px -12px rgb(14 42 71 / 0.18);
 ```
-Bullets do Hero: **sem cartão de fundo**; rótulo "O QUE VOCÊ VAI VER:" numa **tarja** `bg-accent` (`rounded-md`, texto `heading`); cada item numa **cápsula** (`rounded-full`, `bg-accent/15` — dourado em baixa opacidade, definido pelo usuário) com check branco em círculo `secondary`.
+Bullets do Hero (componente `LearnList`, opção escolhida pelo usuário): **sem cartão, sem tarja e sem cápsulas**. Título "O QUE VOCÊ VAI VER:" em `text-label` 700 caixa-alta com linha fina abaixo; itens em 2 colunas (1 no mobile) separados por divisórias `border-heading/10`, check branco em círculo `secondary`.
 
 Uso do glass: nota sobreposta na foto ("Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores").
 

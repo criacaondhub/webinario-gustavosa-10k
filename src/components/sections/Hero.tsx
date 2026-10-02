@@ -1,10 +1,8 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { useState } from 'react'
 import { TbCalendarEvent, TbClock, TbVideo } from 'react-icons/tb'
 import { ASSETS, CONTENT } from '@/config/content'
 import { CtaButton } from '@/components/ui/CtaButton'
-import { LearnList, type LearnVariant } from '@/components/ui/LearnList'
-import { VariantSwitcher } from '@/components/ui/VariantSwitcher'
+import { LearnList } from '@/components/ui/LearnList'
 import { Logo } from '@/components/ui/Logo'
 import { MediaFrame } from '@/components/ui/MediaFrame'
 
@@ -13,9 +11,6 @@ const ICONS = { calendar: TbCalendarEvent, clock: TbClock, video: TbVideo }
 
 export function Hero() {
   const reduce = useReducedMotion()
-  const [learnVariant, setLearnVariant] = useState<LearnVariant>(() =>
-    new URLSearchParams(window.location.search).get('bullets') === 'b' ? 'b' : 'a',
-  )
   const { hero } = CONTENT
 
   const container: Variants = {
@@ -77,7 +72,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="mx-auto mb-10 max-w-2xl text-left lg:mx-0 lg:mb-8 short:mb-6">
-            <LearnList title={hero.learnTitle} items={hero.learn} variant={learnVariant} />
+            <LearnList title={hero.learnTitle} items={hero.learn} />
           </motion.div>
 
           <motion.div variants={item} className="flex flex-col items-center gap-x-5 gap-y-3 sm:flex-row sm:justify-center lg:justify-start">
@@ -107,7 +102,6 @@ export function Hero() {
           </MediaFrame>
         </motion.div>
       </motion.div>
-      {import.meta.env.DEV && <VariantSwitcher value={learnVariant} onChange={setLearnVariant} />}
     </section>
   )
 }

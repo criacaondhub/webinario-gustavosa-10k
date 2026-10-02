@@ -29,7 +29,7 @@ export function About() {
           transition={{ duration: 0.8, ease: EASE }}
           className="lg:grid lg:min-h-0 lg:min-w-0 lg:-ml-[max(0px,(100vw-var(--container-page))/2)] lg:w-[calc(100%+max(0px,(100vw-var(--container-page))/2))]"
         >
-          <MediaFrame asset={ASSETS.speaker} className="aspect-[6/5] w-full sm:aspect-[16/9] lg:aspect-auto" />
+          <MediaFrame asset={ASSETS.speaker} className="aspect-[6/7] w-full" />
         </motion.div>
 
         <motion.div
@@ -37,7 +37,7 @@ export function About() {
           initial="hidden"
           whileInView="shown"
           viewport={{ once: true, amount: 0.2 }}
-          className="min-w-0 px-gutter py-section lg:py-section-lg lg:pr-gutter-lg lg:pl-[clamp(2rem,4vw,3.5rem)]"
+          className="min-w-0 self-center px-gutter py-section lg:py-section-lg lg:pr-gutter-lg lg:pl-[clamp(2rem,4vw,3.5rem)]"
         >
           <motion.h2 variants={item} className="mb-[clamp(1.5rem,3vw,2.25rem)]">
             <span className="block text-statement">{about.label}</span>

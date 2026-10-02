@@ -128,6 +128,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 - **Hero:** `lg:grid-cols-[1.12fr_0.88fr]` — texto à esquerda, retrato à direita; `lg:min-h-screen`. A coluna da foto encosta na borda direita da viewport (sangra para fora do container). No mobile a foto é **ocultada** (igual à referência) e o texto fica centralizado.
 - **Dobra 2:** `lg:grid-cols-[0.8fr_1.2fr]` — foto à esquerda (sangra até a borda esquerda), texto à direita. No mobile a foto aparece no topo, em largura total.
+- **Dobra 2 (`About`):** fundo `background-section`; rótulo "QUEM VAI TE MOSTRAR ISSO:" em `text-statement` 400; nome em `text-headline` 700 (`mt-xs`); bio `text-body` `max-w-[62ch]` `mb-md`; fecho `text-statement` com linha acima (`border-t`, `pt-lg`, `max-w-[46ch]`); CTA. Coluna de texto `py-section lg:py-section-lg` · `lg:pl-[clamp(2rem,4vw,3.5rem)]` · `lg:pr-gutter-lg`. Foto `aspect-[6/5] sm:aspect-[16/9]`, altura total no desktop.
 - **Rodapé:** `lg:grid-cols-3` — logo · crédito · data/hora/plataforma. Centralizado no mobile.
 
 ### Componentes

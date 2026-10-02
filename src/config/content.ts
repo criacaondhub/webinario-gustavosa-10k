@@ -70,4 +70,13 @@ export const CONTENT = {
     micro: ['Sem formulário, sem e-mail, sem enrolação.', 'O botão te leva direto pro grupo fechado do webinário.'],
     portraitNote: { name: 'Dr. Gustavo Sá', role: 'Nutrólogo', reach: '280 mil seguidores' },
   },
+  about: {
+    label: 'QUEM VAI TE MOSTRAR ISSO:',
+    name: 'Dr. Gustavo Sá',
+    bio: [
+      'Nutrólogo e CEO do Instituto LongLife, chegou a 280 mil seguidores falando do que passa pelo consultório dele, das canetas à rotina do dia.',
+    ],
+    closing: 'O que ele faz no próprio perfil todo dia, aberto pra você nesse webinário.',
+    cta: 'QUERO MINHA VAGA NA SALA',
+  },
 } as const

@@ -2,7 +2,7 @@ export const CONFIG = {
   // ⚠️ PENDENTE — preencher antes do deploy
   GROUP_URL: 'https://chat.whatsapp.com/CYDohqRxTJQGYCaaMTarBv', // grupo de WhatsApp (destino de todos os CTAs)
   CONTACT_EMAIL: '⚠️ PENDENTE',
-  DOMAIN: '⚠️ PENDENTE',
+  DOMAIN: '⚠️ PENDENTE', // definir também em .env.production (VITE_SITE_URL) — usado nas tags de compartilhamento
   EVENT_DATE: '[DATA]', // ⚠️ PENDENTE — ex.: "06 de Outubro"
 
   COMPANY_NAME: 'Dr. Gustavo Sá',

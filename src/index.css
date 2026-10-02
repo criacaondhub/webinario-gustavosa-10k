@@ -2,8 +2,6 @@
 @import "tailwindcss";
 @source "./**/*.{ts,tsx}";
 
-/* Desktop com pouca altura (notebooks 1366×768, 1280×800): compacta o Hero para o CTA ficar na primeira dobra */
-@custom-variant short (@media (min-width: 1024px) and (max-height: 840px));
 
 @theme {
   /* Cores — tokens-cor.txt */
@@ -26,7 +24,7 @@
   --font-sans: "futura-pt", ui-sans-serif, system-ui, sans-serif;
 
   --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
-  --text-display--line-height: 0.95;
+  --text-display--line-height: 0.85;
   --text-headline: clamp(1.875rem, 1.4rem + 2vw, 3rem);
   --text-headline--line-height: 1.1;
   --text-statement: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
@@ -46,12 +44,18 @@
 
   /* Espaçamentos e grid */
   --container-page: 1440px;
-  --spacing-gutter: 1.25rem;
-  --spacing-gutter-lg: 4rem;
-  --spacing-section: 4rem;
-  --spacing-section-lg: 7rem;
-  --spacing-grid: 1.5rem;
-  --spacing-grid-lg: 3rem;
+  /* Escala replicada da LP de referência (escola.endometriose.med.br/webinario) */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-gutter: 20px;
+  --spacing-gutter-lg: 32px;
+  --spacing-section: 40px;
+  --spacing-section-lg: 80px;
+  --spacing-grid: 24px;
+  --spacing-grid-lg: 32px;
 }
 
 /* ⚠️ REGRA ABSOLUTA: NUNCA coloque resets CSS fora de @layer.

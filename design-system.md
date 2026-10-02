@@ -24,7 +24,7 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 > Hierarquia entre `text`, `heading` e `muted` (todos navy) vem de **tamanho e peso**, não de cor.
 
 ### Destaques do H1
-Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores até o fim do ano") apenas em **peso 700**, cor `heading` — sem marca-texto e sem cor de acento (utilitário `highlight`).
+Definido pelo usuário: "passo a passo" e "até o fim do ano" em **700 `heading`**; "10 mil seguidores" em **700 `accent`** (amarelo). ⚠️ `accent` sobre `background` = 1,91:1 — abaixo do mínimo de 3:1 para texto grande; o Lighthouse do Agente 3 vai apontar. Alternativa compatível: `accent-hover` (`#B6751F`, 3,53:1).
 
 **Contrastes medidos (WCAG)**
 
@@ -39,7 +39,7 @@ Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores 
 
 **Regras de uso**
 - Texto dos botões sobre `accent`: `heading` (`#0E2A47`). Nunca branco sobre `accent`.
-- `accent` só como **fundo** (CTAs) ou em elementos decorativos/ícones com `aria-hidden`.
+- `accent` como **fundo** (CTAs) e, por decisão do usuário, no destaque "10 mil seguidores" do H1 ou em elementos decorativos/ícones com `aria-hidden`.
 - Seleção de texto (`::selection`): fundo `accent` com texto `heading` (7,1:1) em toda a página. Definido pelo usuário.
 - Bordas finas de divisão (faixa de data, linha do fecho): `heading` com 15% de opacidade → `border-heading/15`.
 
@@ -61,8 +61,6 @@ backdrop-filter: blur(16px) saturate(140%);
 border: 1px solid var(--color-border);
 box-shadow: 0 1px 0 0 rgb(255 255 255 / 0.6) inset, 0 12px 32px -12px rgb(14 42 71 / 0.18);
 ```
-Bullets do Hero (componente `LearnList`, opção escolhida pelo usuário): **sem cartão, sem tarja e sem cápsulas**. Título "O QUE VOCÊ VAI VER:" em `text-label` 700 caixa-alta com linha fina abaixo; itens em 2 colunas (1 no mobile) separados por divisórias `border-heading/10`, check branco em círculo `secondary`.
-
 Uso do glass: nota sobreposta na foto ("Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores").
 
 ---
@@ -84,7 +82,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 | Token | Tamanho | Line-height | Peso | Uso |
 |---|---|---|---|---|
-| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 0.95 | 400 (trechos destacados 700) | H1 do Hero |
+| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 0.85 | 400 (destaques 700) | H1 do Hero |
 | `text-headline` | `clamp(1.875rem, 1.4rem + 2vw, 3rem)` | 1.1 | 700 | Nome "Dr. Gustavo Sá" |
 | `text-statement` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem)` | 1.3 | 400 / 700 | Fecho da dobra 2 |
 | `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400, tracking -0.02em | H2 do Hero |
@@ -97,22 +95,42 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 ## 3. Espaçamentos e Grid
 
-| Token | Mobile | Desktop (`lg` ≥ 1024px) | Classes |
-|---|---|---|---|
-| Container máximo | 1440px | 1440px | `max-w-page mx-auto` |
-| Padding lateral | 20px | 64px | `px-gutter lg:px-gutter-lg` |
-| Padding vertical das seções | 64px | 112px | `py-section lg:py-section-lg` |
-| Gap do grid | 24px | 48px | `gap-grid lg:gap-grid-lg` |
+**Regra de espaçamento replicada integralmente da LP de referência** (escola.endometriose.med.br/webinario), por decisão do usuário. Container mantido em 1440px (regra do projeto; a referência usa 1280px).
+
+### Tokens
+
+| Token | Valor | Classes |
+|---|---|---|
+| `xs` | 8px | `gap-xs`, `p-xs`… |
+| `sm` | 12px | `gap-sm`, `py-sm`… |
+| `md` | 16px | `mt-md`, `gap-md`, `p-md`… |
+| `lg` | 24px | `mb-lg`, `px-lg`… |
+| `xl` | 32px | `gap-x-xl`, `bottom-xl`… |
+| `gutter` / `gutter-lg` | 20px / 32px | `px-gutter lg:px-gutter-lg` |
+| `section` / `section-lg` | 40px / 80px | `py-section lg:py-section-lg` |
+| `grid` / `grid-lg` | 24px / 32px | `gap-grid lg:gap-grid-lg` |
+| Container | 1440px | `max-w-page mx-auto` |
+
+### Ritmo da primeira dobra (idêntico à referência)
+
+| Elemento | Espaçamento |
+|---|---|
+| Coluna de texto | `pt-[clamp(1.75rem,4vw,3rem)]` · `pb-section`; desktop `pt-[clamp(2.5rem,5vw,4.5rem)]` · `pb-section-lg` · `pl-gutter-lg` · `pr-[clamp(2rem,4vw,3.5rem)]`. Alinhada ao topo (não centralizada) |
+| Logo | largura `clamp(11.5rem, 26vw, 20rem)` |
+| Faixa do evento | `mt-md` · `mb-[clamp(2rem,4vw,3rem)]` · `py-sm` · itens `gap-x-sm` (desktop `gap-x-xl`) · ícone `gap-xs` |
+| H1 | `mb-lg` |
+| Texto de apoio | `mb-[clamp(1.75rem,3vw,2.5rem)]` · `max-w-[54ch]` |
+| CTA | `min-h-[60px]` · `max-w-[26rem]` · `p-md` (desktop `px-lg`) · `gap-md` |
+| Nota sobre a foto | `bottom-xl left-xl` · `px-lg py-md` |
 
 ### Grids das seções (desktop)
 
 - **Hero:** `lg:grid-cols-[1.12fr_0.88fr]` — texto à esquerda, retrato à direita; `lg:min-h-screen`. A coluna da foto encosta na borda direita da viewport (sangra para fora do container). No mobile a foto é **ocultada** (igual à referência) e o texto fica centralizado.
-- **Hero em telas baixas:** variante `short:` (≥1024px de largura e ≤840px de altura) compacta logo, espaçamentos e H1 (42px) para o CTA ficar na primeira dobra em notebooks 1366×768 / 1280×800.
 - **Dobra 2:** `lg:grid-cols-[0.8fr_1.2fr]` — foto à esquerda (sangra até a borda esquerda), texto à direita. No mobile a foto aparece no topo, em largura total.
 - **Rodapé:** `lg:grid-cols-3` — logo · crédito · data/hora/plataforma. Centralizado no mobile.
 
 ### Componentes
-- **CTA:** altura mínima 56px, padding `px-7`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`; "Vagas limitadas" ao lado do botão (abaixo dele no mobile), hover com **escala** (`scale 1.04`, `active` 0.98, 200ms; desligado com `prefers-reduced-motion`) + ícone de seta com leve deslocamento — sem troca de cor. Touch target ≥ 44px.
+- **CTA:** altura mínima 60px, padding `p-md` / `sm:px-lg`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`, hover com **escala** (`scale 1.04`, `active` 0.98, 200ms; desligado com `prefers-reduced-motion`) + ícone de seta com leve deslocamento — sem troca de cor. Touch target ≥ 44px.
 - **Raio de borda:** cartões glass `rounded-2xl` (16px). Imagens: **sem** raio.
 
 ---

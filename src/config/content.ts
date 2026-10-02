@@ -46,7 +46,8 @@ export const ASSETS = {
   },
 } as const
 
-export type HeadlinePart = { text: string; highlight?: boolean }
+/** bold = negrito navy · accent = negrito amarelo do projeto */
+export type HeadlinePart = { text: string; emphasis?: 'bold' | 'accent' }
 
 export const CONTENT = {
   hero: {
@@ -57,23 +58,16 @@ export const CONTENT = {
     ],
     headline: [
       { text: 'Aprenda em um ' },
-      { text: 'passo a passo', highlight: true },
+      { text: 'passo a passo', emphasis: 'bold' },
       { text: ' como ganhar ' },
-      { text: '10 mil seguidores até o fim do ano', highlight: true },
+      { text: '10 mil seguidores', emphasis: 'accent' },
+      { text: ' até o fim do ano', emphasis: 'bold' },
       { text: ', mesmo que hoje quase ninguém veja seus posts.' },
     ] as HeadlinePart[],
     intro:
       'Numa sala fechada e ao vivo, eu mostro de onde tiro as pautas de todo dia, quais formatos uso e como você replica isso no seu perfil a partir do dia seguinte.',
-    learnTitle: 'O que você vai ver:',
-    learn: [
-      'De onde tirar pauta todo dia sem travar no “o que eu posto?”',
-      'O formato que mais engaja no meu perfil, e que dá menos trabalho',
-      'Como transformar a rotina do consultório em conteúdo',
-      'O caminho para 10 mil seguidores até o fim do ano',
-    ],
     cta: 'QUERO ENTRAR NO GRUPO DO WEBINÁRIO',
     ctaLines: ['QUERO ENTRAR NO GRUPO', 'DO WEBINÁRIO'],
-    scarcity: 'Vagas limitadas',
     portraitNote: { name: 'Dr. Gustavo Sá', role: 'Nutrólogo', reach: '280 mil seguidores' },
   },
 } as const

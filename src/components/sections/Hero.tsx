@@ -42,7 +42,7 @@ export function Hero() {
 
           <motion.ul
             variants={item}
-            className="mt-6 mb-[clamp(2rem,4vw,3rem)] lg:mt-5 lg:mb-8 short:mt-4 short:mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-y border-heading/15 py-3 font-condensed text-meta font-medium tracking-label uppercase lg:justify-start lg:gap-x-10"
+            className="mt-6 mb-[clamp(2rem,4vw,3rem)] lg:mt-5 lg:mb-8 short:mt-4 short:mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-y border-heading/15 py-3 text-meta lg:justify-start lg:gap-x-10"
           >
             {hero.date.map(({ icon, text }) => {
               const Icon = ICONS[icon]
@@ -88,9 +88,9 @@ export function Hero() {
             </ul>
           </motion.div>
 
-          <motion.div variants={item} className="flex flex-col items-center gap-3 lg:items-start">
+          <motion.div variants={item} className="flex flex-col items-center gap-x-5 gap-y-3 sm:flex-row sm:justify-center lg:justify-start">
             <CtaButton label={hero.cta} lines={hero.ctaLines} />
-            <p className="flex items-center gap-2 font-condensed text-label font-bold tracking-label uppercase">
+            <p className="flex items-center gap-2 text-meta font-bold">
               <span aria-hidden="true" className="relative flex size-2.5">
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:animate-none" />
                 <span className="relative inline-flex size-2.5 rounded-full bg-accent-hover" />

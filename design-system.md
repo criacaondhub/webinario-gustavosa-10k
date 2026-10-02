@@ -72,7 +72,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | Família | Token | Classe | Pesos disponíveis | Uso |
 |---|---|---|---|---|
 | `futura-pt` | `--font-sans` | `font-sans` (padrão do `body`) | 400, 700 (+ itálico) | Títulos, texto corrido |
-| `futura-pt-condensed` | `--font-condensed` | `font-condensed` | 400, 500, 700, 800 (+ itálico) | CTAs, rótulos em caixa-alta, faixa de data |
+| `futura-pt-condensed` | `--font-condensed` | `font-condensed` | 400, 500, 700, 800 (+ itálico) | Só rótulos curtos em caixa-alta (ex.: "O QUE VOCÊ VAI VER:"). **Não usar** em CTAs nem na faixa de data (decisão do usuário) |
 
 > Não usar `font-medium`/`font-semibold` com `font-sans` — o kit só tem 400 e 700 para `futura-pt` (o navegador sintetizaria).
 
@@ -85,9 +85,9 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | `text-statement` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem)` | 1.3 | 400 / 700 | Fecho da dobra 2 |
 | `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400 | H2 do Hero |
 | `text-body` | `1.0625rem` (17px) | 1.6 | 400 | Bio, itens da lista |
-| `text-meta` | `0.9375rem` (15px) | 1.5 | 400 | Microcopy, rodapé |
-| `text-label` | `0.875rem` (14px) | 1.2 | 500–700 condensed, caixa-alta, `tracking-label` (0.08em) | Rótulo "QUEM VAI TE MOSTRAR ISSO:", faixa de data, "Vagas limitadas" |
-| `text-cta` | `1.25rem` (20px) | 1.1 | 700 condensed, caixa-alta, `tracking-label` | Botões (20px/700 = texto grande para WCAG, necessário no hover) |
+| `text-meta` | `0.9375rem` (15px) | 1.5 | 400 (700 em "Vagas limitadas") | Faixa de data (caixa normal, `futura-pt`), "Vagas limitadas", rodapé |
+| `text-label` | `0.875rem` (14px) | 1.2 | 700 condensed, caixa-alta, `tracking-label` (0.08em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |
+| `text-cta` | `1.1875rem` (19px) | 1.2 | 700 `futura-pt`, caixa-alta, tracking 0.02em | Botões (≥18,66px/700 = texto grande para WCAG, necessário no hover) |
 
 ---
 
@@ -108,7 +108,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 - **Rodapé:** `lg:grid-cols-3` — logo · crédito · data/hora/plataforma. Centralizado no mobile.
 
 ### Componentes
-- **CTA:** altura mínima 56px, padding `px-8`, `rounded-full`, `bg-accent text-heading font-condensed text-cta uppercase`, hover `bg-accent-hover` + ícone de seta com leve deslocamento. Touch target ≥ 44px.
+- **CTA:** altura mínima 56px, padding `px-7`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`; "Vagas limitadas" ao lado do botão (abaixo dele no mobile), hover `bg-accent-hover` + ícone de seta com leve deslocamento. Touch target ≥ 44px.
 - **Raio de borda:** cartões glass `rounded-2xl` (16px). Imagens: **sem** raio.
 
 ---

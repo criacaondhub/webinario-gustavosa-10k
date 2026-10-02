@@ -17,7 +17,7 @@ type CtaButtonProps = {
 }
 
 const base =
-  'group inline-flex min-h-14 w-full max-w-md items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 font-condensed text-cta font-bold uppercase tracking-label text-heading shadow-[0_10px_30px_-10px_rgb(242_165_65/0.7)] transition-colors duration-200 ease-out hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading sm:w-auto sm:max-w-none'
+  'group inline-flex min-h-14 w-full max-w-md items-center justify-center gap-3 rounded-lg bg-accent px-7 py-4 font-sans text-cta font-bold uppercase tracking-[0.02em] text-heading shadow-[0_10px_30px_-10px_rgb(242_165_65/0.7)] transition-colors duration-200 ease-out hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-heading sm:w-auto sm:max-w-none'
 
 export function CtaButton({ label, lines, className }: CtaButtonProps) {
   const text = (

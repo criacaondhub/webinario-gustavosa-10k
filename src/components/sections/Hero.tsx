@@ -70,8 +70,8 @@ export function Hero() {
             {hero.intro}
           </motion.p>
 
-          <motion.div variants={item} className="glass mx-auto mb-10 max-w-2xl rounded-2xl p-6 text-left lg:mx-0 lg:mb-8 short:mb-6 short:p-5">
-            <p className="mb-4 lg:mb-3 text-label font-bold tracking-label uppercase">{hero.learnTitle}</p>
+          <motion.div variants={item} className="mx-auto mb-10 max-w-2xl text-left lg:mx-0 lg:mb-8 short:mb-6">
+            <p className="mb-4 inline-block rounded-md bg-accent px-3 py-1.5 text-label font-bold tracking-label text-heading uppercase lg:mb-3">{hero.learnTitle}</p>
             <ul className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 short:gap-2">
               {hero.learn.map((point) => (
                 <li key={point} className="flex items-center gap-3 rounded-full bg-accent/15 py-2.5 pr-5 pl-3 text-body leading-snug short:py-2">

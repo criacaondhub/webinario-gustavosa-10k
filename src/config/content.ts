@@ -1,7 +1,6 @@
 export const CONFIG = {
   // ⚠️ PENDENTE — preencher antes do deploy
   GROUP_URL: 'https://chat.whatsapp.com/CYDohqRxTJQGYCaaMTarBv', // grupo de WhatsApp (destino de todos os CTAs)
-  CONTACT_EMAIL: '⚠️ PENDENTE',
   DOMAIN: 'https://dr.gustavosa.com.br/protocolo-10k', // espelhado em .env.production (VITE_SITE_URL) e no base do vite.config.ts
   EVENT_DATE: '[DATA]', // ⚠️ PENDENTE — ex.: "06 de Outubro"
 

@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+    <!-- Futura PT (Adobe Fonts) sem bloquear a renderização -->
+    <link rel="preload" as="style" href="https://use.typekit.net/gup0mrx.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://use.typekit.net/gup0mrx.css" /></noscript>
+    <!-- Banner do Hero (LCP) baixa antes do JavaScript -->
+    <link rel="preload" as="image" href="/assets/banner-hero-mobile.webp" media="(max-width: 639px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/banner-hero.webp" media="(min-width: 640px)" fetchpriority="high" />
     <title>Protocolo 10K — Webinário gratuito com o Dr. Gustavo Sá</title>
     <meta
       name="description"

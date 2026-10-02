@@ -40,7 +40,7 @@ export function About() {
           className="min-w-0 self-center px-gutter py-section lg:py-section-lg lg:pr-gutter-lg lg:pl-[clamp(2rem,4vw,3.5rem)]"
         >
           <motion.h2 variants={item} className="mb-[clamp(1.5rem,3vw,2.25rem)]">
-            <span className="block text-statement">{about.label}</span>
+            <span className="block text-statement">{about.label}</span>{' '}
             <span className="mt-xs block text-headline font-bold text-balance text-heading">{about.name}</span>
           </motion.h2>
 

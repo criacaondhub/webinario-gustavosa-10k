@@ -1,0 +1,17 @@
+# Landing page Protocolo 10K — publicada em https://dr.gustavosa.com.br/protocolo-10k/
+# Atenção: buscadores leem apenas https://dr.gustavosa.com.br/robots.txt (raiz do domínio).
+# Copie as regras abaixo para o robots.txt da raiz se ele existir.
+
+User-agent: *
+Allow: /protocolo-10k/
+
+# Bloquear rotas com dados pessoais (LGPD)
+Disallow: /protocolo-10k/obrigado
+Disallow: /protocolo-10k/confirmacao
+Disallow: /*?nome=*
+Disallow: /*?email=*
+Disallow: /*?telefone=*
+Disallow: /*?mensagem=*
+Disallow: /*utm_*
+
+Sitemap: https://dr.gustavosa.com.br/protocolo-10k/sitemap.xml

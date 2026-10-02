@@ -15,7 +15,7 @@ export function Footer() {
             href={credit.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-sm font-bold text-accent underline-offset-4 transition-colors duration-200 ease-out hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="inline-flex min-h-11 items-center rounded-sm font-bold text-accent underline-offset-4 transition-colors duration-200 ease-out hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             {credit.name}
           </a>

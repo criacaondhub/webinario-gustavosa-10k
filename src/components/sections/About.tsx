@@ -52,7 +52,7 @@ export function About() {
 
           <motion.p
             variants={item}
-            className="mt-[clamp(2rem,3.5vw,2.75rem)] mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[46ch] border-t border-heading/15 pt-lg text-statement text-pretty text-heading"
+            className="mt-[clamp(2rem,3.5vw,2.75rem)] mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[46ch] border-t border-heading/15 pt-lg text-statement text-balance text-heading"
           >
             {about.closing}
           </motion.p>

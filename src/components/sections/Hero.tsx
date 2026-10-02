@@ -67,7 +67,7 @@ export function Hero() {
             )}
           </motion.h1>
 
-          <motion.p variants={item} className="mx-auto mb-8 max-w-[54ch] text-lead lg:mb-6 lg:max-w-[60ch] text-pretty lg:mx-0">
+          <motion.p variants={item} className="mx-auto mb-8 max-w-[54ch] text-lead tracking-[-0.02em] lg:mb-6 lg:max-w-[60ch] text-pretty lg:mx-0">
             {hero.intro}
           </motion.p>
 

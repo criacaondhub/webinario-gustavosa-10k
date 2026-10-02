@@ -87,7 +87,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 0.95 | 400 (trechos destacados 700) | H1 do Hero |
 | `text-headline` | `clamp(1.875rem, 1.4rem + 2vw, 3rem)` | 1.1 | 700 | Nome "Dr. Gustavo Sá" |
 | `text-statement` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem)` | 1.3 | 400 / 700 | Fecho da dobra 2 |
-| `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400 | H2 do Hero |
+| `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400, tracking -0.02em | H2 do Hero |
 | `text-body` | `1.0625rem` (17px) | 1.6 | 400 | Bio, itens da lista |
 | `text-meta` | `0.9375rem` (15px) | 1.5 | 400 (700 em "Vagas limitadas") | Faixa de data (caixa normal, `futura-pt`), "Vagas limitadas", rodapé |
 | `text-label` | `0.875rem` (14px) | 1.2 | 700 `futura-pt`, caixa-alta, `tracking-label` (0.04em) | Rótulos curtos ("O QUE VOCÊ VAI VER:", "QUEM VAI TE MOSTRAR ISSO:") |

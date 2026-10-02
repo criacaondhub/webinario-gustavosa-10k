@@ -22,8 +22,8 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 
 > Hierarquia entre `text`, `heading` e `muted` (todos navy) vem de **tamanho e peso**, não de cor.
 
-### Marca-texto (destaques do H1)
-Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores até o fim do ano") em `heading` peso 700 com marca-texto `accent` atrás. Receita (utilitário `highlight`): faixa `accent` cobrindo os ~45% inferiores da linha, com `box-decoration-break: clone` para quebrar corretamente entre linhas.
+### Destaques do H1
+Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores até o fim do ano") apenas em **peso 700**, cor `heading` — sem marca-texto e sem cor de acento (utilitário `highlight`).
 
 **Contrastes medidos (WCAG)**
 
@@ -38,7 +38,7 @@ Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores 
 
 **Regras de uso**
 - Texto dos botões sobre `accent`: `heading` (`#0E2A47`). Nunca branco sobre `accent`.
-- `accent` só como **fundo** (CTAs, marca-texto) ou em elementos decorativos/ícones com `aria-hidden`.
+- `accent` só como **fundo** (CTAs, marcadores) ou em elementos decorativos/ícones com `aria-hidden`.
 - Bordas finas de divisão (faixa de data, linha do fecho): `heading` com 15% de opacidade → `border-heading/15`.
 
 ### Surface e Border — Glassmorphism
@@ -79,7 +79,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 | Token | Tamanho | Line-height | Peso | Uso |
 |---|---|---|---|---|
-| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 1.1 | 400 (trechos destacados 700) | H1 do Hero |
+| `text-display` | `clamp(2rem, 1.4rem + 2.2vw, 3.125rem)` | 1.0 | 400 (trechos destacados 700) | H1 do Hero |
 | `text-headline` | `clamp(1.875rem, 1.4rem + 2vw, 3rem)` | 1.1 | 700 | Nome "Dr. Gustavo Sá" |
 | `text-statement` | `clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem)` | 1.3 | 400 / 700 | Fecho da dobra 2 |
 | `text-lead` | `clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)` | 1.5 | 400 | H2 do Hero |

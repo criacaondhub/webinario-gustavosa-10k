@@ -23,7 +23,7 @@
   --font-condensed: "futura-pt-condensed", "futura-pt", ui-sans-serif, sans-serif;
 
   --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
-  --text-display--line-height: 1.1;
+  --text-display--line-height: 1;
   --text-headline: clamp(1.875rem, 1.4rem + 2vw, 3rem);
   --text-headline--line-height: 1.1;
   --text-statement: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
@@ -75,10 +75,6 @@
 @utility highlight {
   font-weight: 700;
   color: var(--color-heading);
-  background-image: linear-gradient(transparent 58%, var(--color-accent) 58%, var(--color-accent) 92%, transparent 92%);
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding-inline: 0.08em;
 }
 
 body {

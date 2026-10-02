@@ -38,7 +38,7 @@ export const ASSETS = {
     alt: 'Dr. Gustavo Sá sorrindo, de braços cruzados',
   },
   speaker: {
-    file: 'assets/gustavo-ambiente.webp',
+    file: 'assets/Imagem-02.webp',
     alt: 'Dr. Gustavo Sá em ambiente profissional',
     label: 'Foto em ambiente profissional',
     size: '1200 × 1400 px',

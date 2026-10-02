@@ -2,6 +2,9 @@
 @import "tailwindcss";
 @source "./**/*.{ts,tsx}";
 
+/* Desktop com pouca altura (notebooks 1366×768, 1280×800): compacta o Hero para o CTA ficar na primeira dobra */
+@custom-variant short (@media (min-width: 1024px) and (max-height: 840px));
+
 @theme {
   /* Cores — tokens-cor.txt */
   --color-background: #f6f7f9;
@@ -11,6 +14,7 @@
   --color-muted: #0e2a47;
   --color-accent: #f2a541;
   --color-accent-hover: #b6751f;
+  --color-secondary: #3d6e9e; /* azul claro — marcadores (check) */
 
   /* Glassmorphism */
   --color-surface: rgb(255 255 255 / 0.55);

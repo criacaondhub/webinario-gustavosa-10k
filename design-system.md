@@ -19,6 +19,7 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 | `muted` | `#0E2A47` | `text-muted` | Texto secundário (faixa de data, rótulos) |
 | `accent` | `#F2A541` | `bg-accent` / `text-accent` | CTAs, destaques do H1, ícones |
 | `accent-hover` | `#B6751F` | `bg-accent-hover` | Hover dos CTAs |
+| `secondary` | `#3D6E9E` | `bg-secondary` | Azul claro dos marcadores (círculo do check, check em branco — 5,35:1). Definido pelo usuário ("azul mais claro") |
 
 > Hierarquia entre `text`, `heading` e `muted` (todos navy) vem de **tamanho e peso**, não de cor.
 
@@ -38,7 +39,7 @@ Definido pelo usuário: trechos destacados ("passo a passo", "10 mil seguidores 
 
 **Regras de uso**
 - Texto dos botões sobre `accent`: `heading` (`#0E2A47`). Nunca branco sobre `accent`.
-- `accent` só como **fundo** (CTAs, marcadores) ou em elementos decorativos/ícones com `aria-hidden`.
+- `accent` só como **fundo** (CTAs) ou em elementos decorativos/ícones com `aria-hidden`.
 - Bordas finas de divisão (faixa de data, linha do fecho): `heading` com 15% de opacidade → `border-heading/15`.
 
 ### Surface e Border — Glassmorphism
@@ -102,6 +103,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 ### Grids das seções (desktop)
 
 - **Hero:** `lg:grid-cols-[1.12fr_0.88fr]` — texto à esquerda, retrato à direita; `lg:min-h-screen`. A coluna da foto encosta na borda direita da viewport (sangra para fora do container). No mobile a foto é **ocultada** (igual à referência) e o texto fica centralizado.
+- **Hero em telas baixas:** variante `short:` (≥1024px de largura e ≤840px de altura) compacta logo, espaçamentos e H1 (42px) para o CTA ficar na primeira dobra em notebooks 1366×768 / 1280×800.
 - **Dobra 2:** `lg:grid-cols-[0.8fr_1.2fr]` — foto à esquerda (sangra até a borda esquerda), texto à direita. No mobile a foto aparece no topo, em largura total.
 - **Rodapé:** `lg:grid-cols-3` — logo · crédito · data/hora/plataforma. Centralizado no mobile.
 

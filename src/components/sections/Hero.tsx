@@ -35,14 +35,14 @@ export function Hero() {
         animate="shown"
         className="mx-auto grid w-full max-w-page lg:min-h-screen lg:grid-cols-[1.12fr_0.88fr]"
       >
-        <div className="min-w-0 px-gutter pt-[clamp(1.75rem,4vw,3rem)] pb-section text-center lg:pt-[clamp(2.5rem,5vw,4.5rem)] lg:pr-[clamp(2rem,4vw,3.5rem)] lg:pb-section-lg lg:pl-gutter-lg lg:text-left">
+        <div className="min-w-0 px-gutter pt-[clamp(1.75rem,4vw,3rem)] pb-section text-center lg:pt-10 short:pt-6 lg:pr-[clamp(2rem,4vw,3.5rem)] lg:pb-16 lg:pl-gutter-lg lg:text-left">
           <motion.div variants={item}>
-            <Logo className="mx-auto w-[clamp(11.5rem,26vw,20rem)] lg:mx-0" />
+            <Logo className="mx-auto w-[clamp(11.5rem,22vw,16rem)] short:w-52 lg:mx-0" />
           </motion.div>
 
           <motion.ul
             variants={item}
-            className="mt-6 mb-[clamp(2rem,4vw,3rem)] flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-y border-heading/15 py-3 font-condensed text-meta font-medium tracking-label uppercase lg:justify-start lg:gap-x-10"
+            className="mt-6 mb-[clamp(2rem,4vw,3rem)] lg:mt-5 lg:mb-8 short:mt-4 short:mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-y border-heading/15 py-3 font-condensed text-meta font-medium tracking-label uppercase lg:justify-start lg:gap-x-10"
           >
             {hero.date.map(({ icon, text }) => {
               const Icon = ICONS[icon]
@@ -55,7 +55,7 @@ export function Hero() {
             })}
           </motion.ul>
 
-          <motion.h1 variants={item} className="mb-6 text-display text-balance text-heading">
+          <motion.h1 variants={item} className="mb-6 lg:mb-5 text-display short:text-[2.625rem] text-balance text-heading">
             {hero.headline.map(({ text, highlight }) =>
               highlight ? (
                 <span key={text} className="highlight">
@@ -67,20 +67,20 @@ export function Hero() {
             )}
           </motion.h1>
 
-          <motion.p variants={item} className="mx-auto mb-8 max-w-[54ch] text-lead text-pretty lg:mx-0">
+          <motion.p variants={item} className="mx-auto mb-8 max-w-[54ch] text-lead lg:mb-6 lg:max-w-[60ch] text-pretty lg:mx-0">
             {hero.intro}
           </motion.p>
 
-          <motion.div variants={item} className="glass mx-auto mb-10 max-w-xl rounded-2xl p-6 text-left lg:mx-0 lg:p-7">
-            <p className="mb-4 font-condensed text-label font-bold tracking-label uppercase">{hero.learnTitle}</p>
-            <ul className="flex flex-col gap-3">
+          <motion.div variants={item} className="glass mx-auto mb-10 max-w-2xl rounded-2xl p-6 text-left lg:mx-0 lg:mb-8 short:mb-6 short:p-5">
+            <p className="mb-4 lg:mb-3 font-condensed text-label font-bold tracking-label uppercase">{hero.learnTitle}</p>
+            <ul className="grid gap-3 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4">
               {hero.learn.map((point) => (
-                <li key={point} className="flex gap-3 text-body">
+                <li key={point} className="flex gap-3 text-body lg:leading-snug">
                   <span
                     aria-hidden="true"
-                    className="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent"
+                    className="mt-1 lg:mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-secondary"
                   >
-                    <TbCheck className="size-3.5 stroke-[3] text-heading" />
+                    <TbCheck className="size-3.5 stroke-[3] text-white" />
                   </span>
                   {point}
                 </li>
@@ -99,11 +99,6 @@ export function Hero() {
             </p>
           </motion.div>
 
-          <motion.p variants={item} className="mx-auto mt-5 max-w-[48ch] text-meta text-pretty lg:mx-0">
-            {hero.micro[0]}
-            <br />
-            {hero.micro[1]}
-          </motion.p>
         </div>
 
         <motion.div

@@ -74,10 +74,6 @@ export const CONTENT = {
     cta: 'QUERO ENTRAR NO GRUPO DO WEBINÁRIO',
     ctaLines: ['QUERO ENTRAR NO GRUPO', 'DO WEBINÁRIO'],
     scarcity: 'Vagas limitadas',
-    micro: [
-      'Não precisa deixar e-mail. Não precisa preencher o celular.',
-      'O botão te leva direto pro grupo fechado do webinário.',
-    ],
     portraitNote: { name: 'Dr. Gustavo Sá', role: 'Nutrólogo', reach: '280 mil seguidores' },
   },
 } as const

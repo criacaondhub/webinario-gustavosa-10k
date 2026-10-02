@@ -32,7 +32,7 @@ export function MediaFrame({ asset, className, priority = false, children }: Med
           <TbPhoto aria-hidden="true" className="size-11 stroke-1 text-heading/50" />
           <span className="text-label font-bold uppercase tracking-label">{asset.label}</span>
           <span className="flex flex-col gap-1 text-meta text-heading/80">
-            <span className="font-bold">{asset.file.replace('assets/', '')}</span>
+            <span className="font-bold">{asset.file.split('/').pop()}</span>
             <span>
               {asset.size} · {asset.ratio}
             </span>

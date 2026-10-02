@@ -139,7 +139,9 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 
 ## 4. Imagens
 
-Arquivos em `public/assets/`. Referenciar sem barra inicial: `src="assets/arquivo.ext"`.
+**Pasta única de imagens: `public/assets/`** (a antiga `Landing Page/assets/` foi removida — era duplicata idêntica). Para trocar uma imagem, salve por cima nesta pasta, com o mesmo nome.
+
+Publicação em subpasta: **https://dr.gustavosa.com.br/protocolo-10k** (`base: '/protocolo-10k/'` no `vite.config.ts`). Por isso os caminhos são montados pelo helper `asset()` em `src/config/content.ts` (`import.meta.env.BASE_URL + "assets/" + arquivo`) — nunca escrever `assets/...` direto nos componentes.
 
 | Arquivo | Seção | Posicionamento | Tamanho sugerido | Status |
 |---|---|---|---|---|

@@ -2,7 +2,7 @@ export const CONFIG = {
   // ⚠️ PENDENTE — preencher antes do deploy
   GROUP_URL: 'https://chat.whatsapp.com/CYDohqRxTJQGYCaaMTarBv', // grupo de WhatsApp (destino de todos os CTAs)
   CONTACT_EMAIL: '⚠️ PENDENTE',
-  DOMAIN: '⚠️ PENDENTE', // definir também em .env.production (VITE_SITE_URL) — usado nas tags de compartilhamento
+  DOMAIN: 'https://dr.gustavosa.com.br/protocolo-10k', // espelhado em .env.production (VITE_SITE_URL) e no base do vite.config.ts
   EVENT_DATE: '[DATA]', // ⚠️ PENDENTE — ex.: "06 de Outubro"
 
   COMPANY_NAME: 'Dr. Gustavo Sá',
@@ -10,6 +10,9 @@ export const CONFIG = {
   EVENT_TIME: '19h00',
   EVENT_PLATFORM: 'Google Meet',
 } as const
+
+/** Caminho de um arquivo de public/assets já com a subpasta de publicação (/protocolo-10k/) */
+const asset = (file: string) => `${import.meta.env.BASE_URL}assets/${file}`
 
 /** Valores ainda não preenchidos começam com ⚠️ */
 export const isPending = (value: string) => value === '#' || value.startsWith('⚠️')
@@ -24,21 +27,21 @@ export type MediaAsset = {
 
 export const ASSETS = {
   logo: {
-    positive: 'assets/logo-positivo.svg',
-    negative: 'assets/logo-negativo.svg',
+    positive: asset('logo-positivo.svg'),
+    negative: asset('logo-negativo.svg'),
     alt: 'Protocolo 10K',
     width: 842.81,
     height: 149.71,
   },
   banner: {
-    file: 'assets/banner-hero.webp', // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
+    file: asset('banner-hero.webp'), // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
     width: 2304,
     height: 1296,
-    mobile: { file: 'assets/banner-hero-mobile.webp', width: 1080, height: 747 }, // abaixo de 640px — arquivo do cliente
+    mobile: { file: asset('banner-hero-mobile.webp'), width: 1080, height: 747 }, // abaixo de 640px — arquivo do cliente
     alt: 'Dr. Gustavo Sá sorrindo, de braços cruzados',
   },
   speaker: {
-    file: 'assets/Imagem-02.webp',
+    file: asset('Imagem-02.webp'),
     alt: 'Dr. Gustavo Sá em ambiente profissional',
     label: 'Foto em ambiente profissional',
     size: '1200 × 1400 px',

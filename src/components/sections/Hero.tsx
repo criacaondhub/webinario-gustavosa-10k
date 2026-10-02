@@ -1,7 +1,10 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { TbCalendarEvent, TbCheck, TbClock, TbVideo } from 'react-icons/tb'
+import { useState } from 'react'
+import { TbCalendarEvent, TbClock, TbVideo } from 'react-icons/tb'
 import { ASSETS, CONTENT } from '@/config/content'
 import { CtaButton } from '@/components/ui/CtaButton'
+import { LearnList, type LearnVariant } from '@/components/ui/LearnList'
+import { VariantSwitcher } from '@/components/ui/VariantSwitcher'
 import { Logo } from '@/components/ui/Logo'
 import { MediaFrame } from '@/components/ui/MediaFrame'
 
@@ -10,6 +13,9 @@ const ICONS = { calendar: TbCalendarEvent, clock: TbClock, video: TbVideo }
 
 export function Hero() {
   const reduce = useReducedMotion()
+  const [learnVariant, setLearnVariant] = useState<LearnVariant>(() =>
+    new URLSearchParams(window.location.search).get('bullets') === 'b' ? 'b' : 'a',
+  )
   const { hero } = CONTENT
 
   const container: Variants = {
@@ -71,20 +77,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="mx-auto mb-10 max-w-2xl text-left lg:mx-0 lg:mb-8 short:mb-6">
-            <p className="mb-4 inline-block rounded-md bg-accent px-3 py-1.5 text-label font-bold tracking-label text-heading uppercase lg:mb-3">{hero.learnTitle}</p>
-            <ul className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 short:gap-2">
-              {hero.learn.map((point) => (
-                <li key={point} className="flex items-center gap-3 rounded-full bg-accent/15 py-2.5 pr-5 pl-3 text-body leading-snug short:py-2">
-                  <span
-                    aria-hidden="true"
-                    className="flex size-5 shrink-0 items-center justify-center rounded-full bg-secondary"
-                  >
-                    <TbCheck className="size-3.5 stroke-[3] text-white" />
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
+            <LearnList title={hero.learnTitle} items={hero.learn} variant={learnVariant} />
           </motion.div>
 
           <motion.div variants={item} className="flex flex-col items-center gap-x-5 gap-y-3 sm:flex-row sm:justify-center lg:justify-start">
@@ -114,6 +107,7 @@ export function Hero() {
           </MediaFrame>
         </motion.div>
       </motion.div>
+      {import.meta.env.DEV && <VariantSwitcher value={learnVariant} onChange={setLearnVariant} />}
     </section>
   )
 }

@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@source "./**/*.{ts,tsx}";
+
+@theme {
+  /* Preenchido pelo Agente 01 */
+}
+
+/* ⚠️ REGRA ABSOLUTA: NUNCA coloque resets CSS fora de @layer.
+   O Tailwind v4 coloca todos os utilitários dentro de @layer utilities.
+   Estilos fora de @layer têm prioridade sobre @layer independente de especificidade,
+   anulando silenciosamente classes como py-, px-, mx-auto, gap-, etc. */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}

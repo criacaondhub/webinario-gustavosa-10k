@@ -145,7 +145,7 @@ Arquivos em `public/assets/`. Referenciar sem barra inicial: `src="assets/arquiv
 |---|---|---|---|---|
 | `logo-positivo.svg` | Hero (topo) | Acima da faixa de data, alinhado à esquerda no desktop e centralizado no mobile; largura `clamp(11.5rem, 26vw, 20rem)` | vetor | ✅ |
 | `logo-negativo.svg` | Rodapé | Coluna esquerda, `w-[11.5rem]` | vetor | ✅ |
-| `banner-hero.webp` | Hero (fundo) | **Banner full** fornecido pelo cliente (2304×1296, já otimizado). ≥1280px (`xl`): fundo da seção inteira (`absolute inset-0`, `object-cover`), texto sobreposto no lado claro à esquerda, nota glass "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" na base da coluna direita. <1280px: imagem no topo (mobile `aspect-square object-[95%_top]`; `sm` `aspect-[16/9]`) com fade inferior para `background`, conteúdo empilhado e centralizado abaixo | 2304 × 1296 px (16:9) | ✅ |
+| `banner-hero.webp` | Hero (fundo) | **Banner full** fornecido pelo cliente (2304×1296, já otimizado). ≥1280px (`xl`): fundo da seção inteira (`absolute inset-0`, `object-cover`), texto sobreposto no lado claro à esquerda, nota glass "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" na base da coluna direita. <1280px: imagem no topo (abaixo de 640px usa `banner-hero-mobile.webp` 1080×747, sem recorte; `sm`–`xl` usa o banner desktop em `aspect-[16/9]`) com fade inferior para `background`, conteúdo empilhado e centralizado abaixo | 2304 × 1296 px (16:9) | ✅ |
 | `gustavo-ambiente.webp` | Dobra 2 (coluna esquerda) | `object-cover object-top`, altura total da seção, sangra até a borda esquerda | 1200 × 1400 px (6:7) | ⚠️ PENDENTE — placeholder |
 
 **Regras**

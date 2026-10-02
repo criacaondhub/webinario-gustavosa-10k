@@ -34,6 +34,7 @@ export const ASSETS = {
     file: 'assets/banner-hero.webp', // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
     width: 2304,
     height: 1296,
+    mobile: { file: 'assets/banner-hero-mobile.webp', width: 1080, height: 747 }, // abaixo de 640px — arquivo do cliente
     alt: 'Dr. Gustavo Sá sorrindo, de braços cruzados',
   },
   speaker: {

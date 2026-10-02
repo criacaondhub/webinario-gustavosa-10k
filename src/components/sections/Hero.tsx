@@ -24,14 +24,17 @@ export function Hero() {
     <section className="relative isolate overflow-x-clip">
       {/* Banner full: fundo da seção no desktop; no mobile vira imagem no topo com fade para o fundo */}
       <div className="relative xl:absolute xl:inset-0 xl:-z-10">
-        <img
-          src={ASSETS.banner.file}
-          width={ASSETS.banner.width}
-          height={ASSETS.banner.height}
-          alt={ASSETS.banner.alt}
-          fetchPriority="high"
-          className="block aspect-square w-full object-cover object-[95%_top] sm:aspect-[16/9] sm:object-[85%_center] xl:aspect-auto xl:size-full"
-        />
+        <picture>
+          <source media="(min-width: 640px)" srcSet={ASSETS.banner.file} width={ASSETS.banner.width} height={ASSETS.banner.height} />
+          <img
+            src={ASSETS.banner.mobile.file}
+            width={ASSETS.banner.mobile.width}
+            height={ASSETS.banner.mobile.height}
+            alt={ASSETS.banner.alt}
+            fetchPriority="high"
+            className="block h-auto w-full sm:aspect-[16/9] sm:object-cover sm:object-[85%_center] xl:aspect-auto xl:size-full"
+          />
+        </picture>
         <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-background to-transparent xl:hidden" />
       </div>
 

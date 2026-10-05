@@ -26,11 +26,11 @@ export type MediaAsset = {
 
 export const ASSETS = {
   logo: {
-    positive: asset('logo-positivo.svg'),
-    negative: asset('logo-negativo.svg'),
+    positive: asset('logo-protocolo-horizontal.svg'),
+    negative: asset('logo-protocolo-horizontal-negativo.svg'), // gerado do horizontal com as duas cores em #f0ede4 (rodapé azul)
     alt: 'Protocolo 10K',
-    width: 842.81,
-    height: 149.71,
+    width: 560.58,
+    height: 68.29,
   },
   banner: {
     file: asset('banner-hero.webp'), // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
@@ -48,7 +48,7 @@ export const ASSETS = {
   },
 } as const
 
-/** bold = negrito navy · accent = negrito amarelo do projeto */
+/** bold = negrito grafite · accent = negrito azul do projeto */
 export type HeadlinePart = { text: string; emphasis?: 'bold' | 'accent' }
 
 export const CONTENT = {

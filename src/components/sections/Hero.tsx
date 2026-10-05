@@ -46,7 +46,7 @@ export function Hero() {
       >
         <div className="min-w-0 px-gutter pt-[clamp(1.75rem,4vw,3rem)] pb-section text-center xl:pt-[clamp(2.5rem,5vw,4.5rem)] xl:pr-[clamp(2rem,4vw,3.5rem)] xl:pb-section-lg xl:pl-gutter-lg xl:text-left">
           <motion.div variants={item}>
-            <Logo className="mx-auto w-[clamp(11.5rem,26vw,20rem)] xl:mx-0" />
+            <Logo className="mx-auto w-[clamp(12rem,24vw,19rem)] xl:mx-0" />
           </motion.div>
 
           <motion.ul
@@ -57,7 +57,7 @@ export function Hero() {
               const Icon = ICONS[icon]
               return (
                 <li key={text} className="flex shrink-0 items-center gap-xs whitespace-nowrap">
-                  <Icon aria-hidden="true" className="size-[18px] shrink-0 text-accent-hover" />
+                  <Icon aria-hidden="true" className="size-[18px] shrink-0 text-accent" />
                   {text}
                 </li>
               )

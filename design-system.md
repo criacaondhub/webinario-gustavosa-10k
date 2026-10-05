@@ -12,35 +12,35 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 
 | Token | Valor | Classe | Uso |
 |---|---|---|---|
-| `background` | `#F6F7F9` | `bg-background` | Fundo base da página (Hero, rodapé) |
-| `background-section` | `#FAFAFA` | `bg-background-section` | Fundo de seção alternada (dobra 2) |
-| `text` | `#0E2A47` | `text-text` | Texto corrido (parágrafos, bio, microcopy) — navy, definido pelo usuário (o `#C5C5C5` original reprovava contraste) |
-| `heading` | `#0E2A47` | `text-heading` | Títulos (`h1`, `h2`), nome, ênfases em negrito |
-| `muted` | `#0E2A47` | `text-muted` | Texto secundário (faixa de data, rótulos) |
-| `accent` | `#F2A541` | `bg-accent` / `text-accent` | CTAs, destaques do H1, ícones |
-| `accent-hover` | `#B6751F` | `bg-accent-hover` / `text-accent-hover` | Ícones da faixa do evento e ponto de "Vagas limitadas" (o hover do CTA é escala, não cor) |
-| `secondary` | `#3D6E9E` | `bg-secondary` | Azul claro dos marcadores (círculo do check, check em branco — 5,35:1). Definido pelo usuário ("azul mais claro") |
+| `background` | `#F0EDE4` | `bg-background` | Fundo base da página (Hero) — substitui o branco |
+| `background-section` | `#F0EDE4` | `bg-background-section` | Fundo da dobra 2 (igual ao base) |
+| `text` | `#28374A` | `text-text` | Texto corrido (parágrafos, bio, microcopy) — grafite, definido pelo usuário |
+| `heading` | `#28374A` | `text-heading` | Títulos (`h1`, `h2`), nome, ênfases em negrito |
+| `muted` | `#28374A` | `text-muted` | Texto secundário (faixa de data, rótulos) |
+| `accent` | `#1E3FA8` | `bg-accent` / `text-accent` | Destaques (H1), CTAs, ícones — definido pelo usuário |
+| `accent-hover` | `#17318A` | `bg-accent-hover` / `text-accent-hover` | Azul mais escuro (reserva; o hover do CTA é escala, não cor) |
+| `light` | `#F0EDE4` | `text-light` | Tudo que era branco: texto do CTA, texto e link do rodapé, logo negativo |
+| `secondary` | `#1E3FA8` | `bg-secondary` | Marcadores (círculo do check) |
 
-> Hierarquia entre `text`, `heading` e `muted` (todos navy) vem de **tamanho e peso**, não de cor.
+> Hierarquia entre `text`, `heading` e `muted` (todos grafite) vem de **tamanho e peso**, não de cor.
 
 ### Destaques do H1
-Definido pelo usuário: "passo a passo" e "até o fim do ano" em **700 `heading`**; "10 mil seguidores" em **700 `accent`** (amarelo). ⚠️ `accent` sobre `background` = 1,91:1 — abaixo do mínimo de 3:1 para texto grande; o Lighthouse do Agente 3 vai apontar. Alternativa compatível: `accent-hover` (`#B6751F`, 3,53:1).
+Definido pelo usuário: "passo a passo" e "até o fim do ano" em **700 `heading`**; "10 mil seguidores" em **700 `accent`** (azul, 7,69:1 sobre `background`).
 
 **Contrastes medidos (WCAG)**
 
 | Par | Contraste | Resultado |
 |---|---|---|
-| `heading` sobre `background` | 13,6:1 | ✅ AA/AAA |
-| `heading` sobre `accent` (CTA) | 7,1:1 | ✅ AA |
-| `heading` sobre `accent-hover` | 3,85:1 | ✅ só texto grande |
-| `accent` sobre `background` | 1,91:1 | ❌ não usar como texto |
-| `accent-hover` sobre `background` | 3,53:1 | ⚠️ só texto grande / ícones |
-| `text` (navy) sobre `background` | 13,6:1 | ✅ AA/AAA |
+| `text`/`heading` sobre `background` | 10,34:1 | ✅ AA/AAA |
+| `accent` sobre `background` | 7,69:1 | ✅ AA/AAA |
+| `light` sobre `accent` (CTA) | 7,69:1 | ✅ AA/AAA |
+| `light` sobre `accent` (rodapé) | 7,69:1 | ✅ AA/AAA |
+| `accent` sobre `heading` | 1,34:1 | ❌ não usar |
 
 **Regras de uso**
-- Texto dos botões sobre `accent`: `heading` (`#0E2A47`). Nunca branco sobre `accent`.
+- Texto dos botões sobre `accent`: `light` (`#F0EDE4`).
 - `accent` como **fundo** (CTAs) e, por decisão do usuário, no destaque "10 mil seguidores" do H1 ou em elementos decorativos/ícones com `aria-hidden`.
-- Seleção de texto (`::selection`): fundo `accent` com texto `heading` (7,1:1) em toda a página. Definido pelo usuário.
+- Seleção de texto (`::selection`): fundo `accent` com texto `light` (7,69:1) em toda a página. Definido pelo usuário.
 - Bordas finas de divisão (faixa de data, linha do fecho): `heading` com 15% de opacidade → `border-heading/15`.
 
 ### Surface e Border — Glassmorphism
@@ -67,16 +67,14 @@ Uso do glass: nota sobreposta na foto ("Dr. Gustavo Sá · Nutrólogo · 280 mil
 
 ## 2. Tipografia
 
-Fonte: **Futura PT** via Adobe Fonts (kit `gup0mrx`).
-Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx.css");`
+Fonte: **Punta** (arquivo local `src/assets/fonts/punta-light.otf`, via `@font-face` em `src/index.css`).
 
 | Família | Token | Classe | Pesos disponíveis | Uso |
 |---|---|---|---|---|
-| `futura-pt` | `--font-sans` | `font-sans` (padrão do `body`) | 400, 700 (+ itálico) | **Família única da página**: títulos, textos, rótulos, CTAs |
+| `Punta` | `--font-sans` | `font-sans` (padrão do `body`) | só Light (300); 700 é sintetizado pelo navegador | **Família única da página**: títulos, textos, rótulos, CTAs |
 
-> `futura-pt-condensed` vem no kit, mas **não é usada** (decisão do usuário: padronizar tudo em `futura-pt`).
 
-> Não usar `font-medium`/`font-semibold` com `font-sans` — o kit só tem 400 e 700 para `futura-pt` (o navegador sintetizaria).
+> Só existe o arquivo Light da Punta: 400 usa a Light e 700 (`font-bold`) é negrito sintético. Trocar quando chegarem os arquivos Regular/Bold.
 
 ### Escala
 
@@ -116,7 +114,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 | Elemento | Espaçamento |
 |---|---|
 | Coluna de texto | `pt-[clamp(1.75rem,4vw,3rem)]` · `pb-section`; desktop `pt-[clamp(2.5rem,5vw,4.5rem)]` · `pb-section-lg` · `pl-gutter-lg` · `pr-[clamp(2rem,4vw,3.5rem)]`. Alinhada ao topo (não centralizada) |
-| Logo | largura `clamp(11.5rem, 26vw, 20rem)` |
+| Logo | largura `clamp(12rem, 24vw, 19rem)` |
 | Faixa do evento | `mt-md` · `mb-[clamp(2rem,4vw,3rem)]` · `py-sm` · itens `gap-x-sm` (desktop `gap-x-xl`) · ícone `gap-xs` |
 | H1 | `mb-lg` |
 | Texto de apoio | `mb-[clamp(1.75rem,3vw,2.5rem)]` · `max-w-[54ch]` |
@@ -129,7 +127,7 @@ Import no topo de `src/index.css`: `@import url("https://use.typekit.net/gup0mrx
 - **Hero:** banner full de fundo a partir de `xl` (1280px), com `xl:grid-cols-[1.12fr_0.88fr]` e `xl:min-h-screen` — texto na coluna esquerda sobre a área clara do banner. Abaixo de 1280px o banner fica no topo e o texto empilhado/centralizado (em 1024px não há espaço lateral sem cobrir o rosto).
 - **Dobra 2:** `lg:grid-cols-[0.8fr_1.2fr]` — foto à esquerda (sangra até a borda esquerda), texto à direita. No mobile a foto aparece no topo, em largura total.
 - **Dobra 2 (`About`):** fundo `background-section`; rótulo "QUEM VAI TE MOSTRAR ISSO:" em `text-statement` 400; nome em `text-headline` 700 (`mt-xs`); bio `text-body` `max-w-[62ch]` `mb-md`; fecho `text-statement` + `text-balance` (o `text-pretty` do Chrome só evita 1 palavra sozinha; aqui sobravam 2) com linha acima (`border-t`, `pt-lg`, `max-w-[46ch]`); CTA. Coluna de texto `py-section lg:py-section-lg` · `lg:pl-[clamp(2rem,4vw,3.5rem)]` · `lg:pr-gutter-lg`. Foto sempre na proporção original `aspect-[6/7]` (sem corte); no desktop a linha acompanha a altura da foto e o texto fica centralizado na vertical (`self-center`).
-- **Rodapé (`Footer`):** fundo `heading` (navy), texto branco 75%; `lg:grid-cols-3` — logo negativo (`w-[11.5rem]`) · "Desenvolvido por: **Nova Dimensão**" (link em `accent`, 7,1:1 sobre navy; hover branco sublinhado) · data · hora · plataforma. `py-section`, `gap-lg` (`lg:gap-xl`), centralizado no mobile.
+- **Rodapé (`Footer`):** fundo `accent` (azul dos CTAs), texto `light` 75%; `lg:grid-cols-3` — logo negativo (`w-[13rem]`) · "Desenvolvido por: **Nova Dimensão**" (link em `light` sublinhado; hover `light/75`) · data · hora · plataforma. `py-section`, `gap-lg` (`lg:gap-xl`), centralizado no mobile.
 
 ### Componentes
 - **CTA:** altura mínima 60px, padding `p-md` / `sm:px-lg`, `rounded-lg` (8px), `bg-accent text-heading font-sans font-bold text-cta uppercase`, hover com **escala** (`scale 1.04`, `active` 0.98, 200ms; desligado com `prefers-reduced-motion`) + ícone de seta com leve deslocamento — sem troca de cor. Touch target ≥ 44px.
@@ -145,8 +143,8 @@ Publicação em subpasta: **https://dr.gustavosa.com.br/protocolo-10k** (`base: 
 
 | Arquivo | Seção | Posicionamento | Tamanho sugerido | Status |
 |---|---|---|---|---|
-| `logo-positivo.svg` | Hero (topo) | Acima da faixa de data, alinhado à esquerda no desktop e centralizado no mobile; largura `clamp(11.5rem, 26vw, 20rem)` | vetor | ✅ |
-| `logo-negativo.svg` | Rodapé | Coluna esquerda, `w-[11.5rem]` | vetor | ✅ |
+| `logo-protocolo-horizontal.svg` | Hero (topo) | Acima da faixa de data, alinhado à esquerda no desktop e centralizado no mobile; largura `clamp(12rem, 24vw, 19rem)` | vetor | ✅ |
+| `logo-protocolo-horizontal-negativo.svg` | Rodapé | Coluna esquerda, `w-[13rem]` | vetor | ✅ |
 | `banner-hero.webp` | Hero (fundo) | **Banner full** fornecido pelo cliente (2304×1296, já otimizado). ≥1280px (`xl`): fundo da seção inteira (`absolute inset-0`, `object-cover`), texto sobreposto no lado claro à esquerda, nota glass "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" na base da coluna direita. <1280px: imagem no topo (abaixo de 640px usa `banner-hero-mobile.webp` 1080×747, sem recorte; `sm`–`xl` usa o banner desktop em `aspect-[16/9]`) com fade inferior para `background`, conteúdo empilhado e centralizado abaixo | 2304 × 1296 px (16:9) | ✅ |
 | `OG-BANNER.webp` | Compartilhamento (`og:image` / `twitter:image` no `index.html`) | URL absoluta via `VITE_SITE_URL` (`.env.production`) | 1200 × 630 px | ✅ |
 | `Imagem-02.webp` | Dobra 2 (coluna esquerda) | `object-cover object-top`, altura total da seção, sangra até a borda esquerda | 1200 × 1400 px (6:7) | ✅ |

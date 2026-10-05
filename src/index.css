@@ -1,26 +1,35 @@
 @import "tailwindcss";
 @source "./**/*.{ts,tsx}";
 
+/* Punta — só o peso Light foi fornecido; o bold (700) é sintetizado pelo navegador */
+@font-face {
+  font-family: "Punta";
+  src: url("./assets/fonts/punta-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   /* Cores — tokens-cor.txt */
-  --color-background: #f6f7f9;
-  --color-background-section: #fafafa;
-  --color-text: #0e2a47;
-  --color-heading: #0e2a47;
-  --color-muted: #0e2a47;
-  --color-accent: #f2a541;
-  --color-accent-hover: #b6751f;
-  --color-secondary: #3d6e9e; /* azul claro — marcadores (check) */
+  --color-background: #f0ede4;
+  --color-background-section: #f0ede4;
+  --color-text: #28374a;
+  --color-heading: #28374a;
+  --color-muted: #28374a;
+  --color-accent: #1e3fa8; /* destaques */
+  --color-accent-hover: #17318a;
+  --color-light: #f0ede4; /* substitui o branco: textos sobre fundo escuro */
+  --color-secondary: #1e3fa8; /* marcadores (check) */
 
   /* Glassmorphism */
-  --color-surface: rgb(255 255 255 / 0.55);
-  --color-surface-strong: rgb(255 255 255 / 0.75);
-  --color-border: rgb(255 255 255 / 0.7);
-  --color-border-subtle: rgb(14 42 71 / 0.08);
+  --color-surface: rgb(240 237 228 / 0.55);
+  --color-surface-strong: rgb(240 237 228 / 0.75);
+  --color-border: rgb(240 237 228 / 0.7);
+  --color-border-subtle: rgb(40 55 74 / 0.08);
 
-  /* Tipografia — Futura PT (Adobe Fonts) */
-  --font-sans: "futura-pt", ui-sans-serif, system-ui, sans-serif;
+  /* Tipografia — Punta (arquivo local) */
+  --font-sans: "Punta", ui-sans-serif, system-ui, sans-serif;
 
   --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.125rem);
   --text-display--line-height: 1;
@@ -69,7 +78,7 @@
 
   ::selection {
     background-color: var(--color-accent);
-    color: var(--color-heading);
+    color: var(--color-light);
   }
 }
 
@@ -79,8 +88,8 @@
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid var(--color-border);
   box-shadow:
-    0 1px 0 0 rgb(255 255 255 / 0.6) inset,
-    0 12px 32px -12px rgb(14 42 71 / 0.18);
+    0 1px 0 0 rgb(240 237 228 / 0.6) inset,
+    0 12px 32px -12px rgb(40 55 74 / 0.18);
 }
 
 @utility highlight {

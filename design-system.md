@@ -1,6 +1,6 @@
 # Design System — Protocolo 10K · Dr. Gustavo Sá
 
-Landing page do webinário gratuito **Protocolo 10K** (19h00 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Sem formulário: todos os CTAs abrem o grupo de WhatsApp (`CONFIG.GROUP_URL`).
+Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Sem formulário: todos os CTAs abrem o grupo de WhatsApp (`CONFIG.GROUP_URL`).
 
 Todos os tokens abaixo estão declarados no `@theme {}` de `src/index.css` e viram classes utilitárias do Tailwind v4 (ex.: `bg-background`, `text-heading`, `px-gutter`, `max-w-page`, `text-display`).
 

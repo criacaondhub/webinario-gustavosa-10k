@@ -2,11 +2,11 @@ export const CONFIG = {
   // ⚠️ PENDENTE — preencher antes do deploy
   GROUP_URL: 'https://chat.whatsapp.com/CYDohqRxTJQGYCaaMTarBv', // grupo de WhatsApp (destino de todos os CTAs)
   DOMAIN: 'https://dr.gustavosa.com.br/protocolo-10k', // espelhado em .env.production (VITE_SITE_URL) e no base do vite.config.ts
-  EVENT_DATE: '[DATA]', // ⚠️ PENDENTE — ex.: "06 de Outubro"
+  EVENT_DATE: '20 de Outubro',
 
   COMPANY_NAME: 'Dr. Gustavo Sá',
   EVENT_NAME: 'Protocolo 10K',
-  EVENT_TIME: '19h00',
+  EVENT_TIME: '19h30',
   EVENT_PLATFORM: 'Google Meet',
 } as const
 

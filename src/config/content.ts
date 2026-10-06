@@ -33,10 +33,10 @@ export const ASSETS = {
     height: 68.29,
   },
   banner: {
-    file: asset('banner-hero.webp'), // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
+    file: asset('banner-hero_V2.webp'), // banner full do Hero — arquivo fornecido pelo cliente (2304×1296)
     width: 2304,
     height: 1296,
-    mobile: { file: asset('banner-hero-mobile.webp'), width: 1080, height: 747 }, // abaixo de 640px — arquivo do cliente
+    mobile: { file: asset('banner-hero-mobile_V2.webp'), width: 1080, height: 747 }, // abaixo de 640px — arquivo do cliente
     alt: 'Dr. Gustavo Sá sorrindo, de braços cruzados',
   },
   speaker: {

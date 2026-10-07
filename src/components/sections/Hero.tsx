@@ -94,7 +94,7 @@ export function Hero() {
               className="h-2 w-full overflow-hidden rounded-full bg-heading/15"
             >
               <motion.div
-                className="h-full rounded-full bg-accent"
+                className="h-full rounded-full bg-alert"
                 initial={{ width: reduce ? `${hero.progress.value}%` : '0%' }}
                 animate={{ width: `${hero.progress.value}%` }}
                 transition={{ duration: 1.2, ease: EASE, delay: 0.6 }}

@@ -83,7 +83,7 @@ export function ThankYou() {
         </motion.h2>
 
         <motion.div variants={item} className="flex w-full justify-center">
-          <CtaButton label={thankYou.cta} href={CONFIG.GROUP_URL} />
+          <CtaButton label={thankYou.cta} href={CONFIG.GROUP_URL} variant="whatsapp" />
         </motion.div>
       </div>
     </motion.main>

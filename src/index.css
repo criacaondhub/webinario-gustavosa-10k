@@ -21,6 +21,8 @@
   --color-accent-hover: #17318a;
   --color-light: #f0ede4; /* substitui o branco: textos sobre fundo escuro */
   --color-secondary: #1e3fa8; /* marcadores (check) */
+  --color-whatsapp: #25d366; /* CTA do grupo VIP (página de obrigado) — texto em heading: 6,1:1 */
+  --color-alert: #d92d20; /* barra de vagas do Hero — 4,1:1 sobre background */
 
   /* Glassmorphism */
   --color-surface: rgb(240 237 228 / 0.55);

@@ -73,8 +73,9 @@ services:
         - traefik.http.routers.gustavosa-protocolo-10k-api.middlewares=protocolo-10k-api-stripprefix
         - traefik.http.middlewares.protocolo-10k-api-stripprefix.stripprefix.prefixes=/protocolo-10k
         - traefik.http.services.gustavosa-protocolo-10k-api.loadbalancer.server.port=3001
-        # A API está em duas redes; sem isto o Traefik pode tentar alcançá-la pela interna, que ele não enxerga
-        - traefik.docker.network=GustavoSaNet
+        # A API está em duas redes; sem isto o Traefik pode tentar alcançá-la pela interna, que ele não enxerga.
+        # ⚠️ Só traefik.swarm.network: com traefik.docker.network junto, o Traefik v3 descarta o serviço
+        # inteiro ("both Docker and Swarm labels are defined") e o /api cai no nginx do site.
         - traefik.swarm.network=GustavoSaNet
 
   # Postgres. Só na rede interna e sem porta publicada: de fora, ninguém alcança o banco — só a API e o backup.

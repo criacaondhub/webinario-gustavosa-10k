@@ -64,7 +64,7 @@ export function Hero() {
             })}
           </motion.ul>
 
-          <motion.h1 variants={item} className="mb-lg text-display text-balance text-heading">
+          <motion.h1 variants={item} className="mb-lg text-display text-balance text-heading leading-[1.2] xl:-mr-12 xl:text-[2.375rem] xl:text-wrap">
             {hero.headline.map(({ text, emphasis }) =>
               emphasis ? (
                 <span key={text} className={emphasis === 'accent' ? 'font-bold text-accent' : 'highlight'}>
@@ -76,19 +76,32 @@ export function Hero() {
             )}
           </motion.h1>
 
-          <motion.p variants={item} className="mx-auto mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[54ch] text-lead tracking-[-0.02em] text-pretty xl:mx-0">
+          <motion.h2 variants={item} className="mx-auto mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[54ch] text-lead tracking-[-0.02em] text-pretty xl:mx-0">
             {hero.intro}
-          </motion.p>
+          </motion.h2>
 
           <motion.div variants={item} className="flex justify-center xl:justify-start">
             <CtaButton label={hero.cta} />
           </motion.div>
 
-          <motion.p variants={item} className="mx-auto mt-md max-w-[48ch] text-meta text-pretty xl:mx-0">
-            {hero.micro[0]}
-            <br />
-            {hero.micro[1]}
-          </motion.p>
+          <motion.div variants={item} className="mx-auto mt-md w-full max-w-[27rem] xl:mx-0">
+            <div
+              role="progressbar"
+              aria-valuenow={hero.progress.value}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={hero.progress.label}
+              className="h-2 w-full overflow-hidden rounded-full bg-heading/15"
+            >
+              <motion.div
+                className="h-full rounded-full bg-accent"
+                initial={{ width: reduce ? `${hero.progress.value}%` : '0%' }}
+                animate={{ width: `${hero.progress.value}%` }}
+                transition={{ duration: 1.2, ease: EASE, delay: 0.6 }}
+              />
+            </div>
+            <p className="mt-xs text-meta text-pretty">{hero.progress.label}</p>
+          </motion.div>
 
         </div>
 

@@ -1,6 +1,6 @@
 # Design System — Protocolo 10K · Dr. Gustavo Sá
 
-Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Sem formulário: todos os CTAs abrem o grupo de WhatsApp (`CONFIG.GROUP_URL`).
+Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Todos os CTAs abrem o pop-up de inscrição (`LeadModal`), que envia os dados para uma Planilha Google via Apps Script (`CONFIG.FORM_ENDPOINT`, ver `google-apps-script.gs`) e redireciona para a página de obrigado (`CONFIG.THANK_YOU_URL` → `obrigado/index.html` + `src/obrigado.tsx`, seção `ThankYou`, fundo `banner-hero_Obrigado.webp`, CTA para o grupo VIP do WhatsApp `CONFIG.GROUP_URL`).
 
 Todos os tokens abaixo estão declarados no `@theme {}` de `src/index.css` e viram classes utilitárias do Tailwind v4 (ex.: `bg-background`, `text-heading`, `px-gutter`, `max-w-page`, `text-display`).
 
@@ -25,7 +25,7 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 > Hierarquia entre `text`, `heading` e `muted` (todos grafite) vem de **tamanho e peso**, não de cor.
 
 ### Destaques do H1
-Definido pelo usuário: "passo a passo" e "até o fim do ano" em **700 `heading`**; "10 mil seguidores" em **700 `accent`** (azul, 7,69:1 sobre `background`).
+Definido pelo usuário: "10 mil seguidores até o fim do ano" em **700 `accent`** (azul, 7,69:1 sobre `background`).
 
 **Contrastes medidos (WCAG)**
 

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { TbChevronDown, TbX } from 'react-icons/tb'
-import { CONFIG, CONTENT, isPending } from '@/config/content'
+import { CONFIG, CONTENT } from '@/config/content'
+import { PRIVACY } from '@/config/privacy'
 import { ctaClass } from '@/components/ui/CtaButton'
 import { LeadModalContext } from '@/lib/lead-modal'
 import { cn } from '@/lib/utils'
@@ -16,11 +17,12 @@ type Values = {
   clinic: string
   specialty: string
   revenue: string
+  consent: boolean
 }
 type Field = keyof Values
 type Errors = Partial<Record<Field, string>>
 
-const EMPTY: Values = { name: '', email: '', whatsapp: '', instagram: '', graduated: '', clinic: '', specialty: '', revenue: '' }
+const EMPTY: Values = { name: '', email: '', whatsapp: '', instagram: '', graduated: '', clinic: '', specialty: '', revenue: '', consent: false }
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
 
 /** (11) 91234-5678 */
@@ -48,12 +50,14 @@ function validate(v: Values): Errors {
   if (!v.clinic) e.clinic = form.errors.choice
   if (!v.specialty.trim()) e.specialty = form.errors.required
   if (!v.revenue) e.revenue = form.errors.choice
+  if (!v.consent) e.consent = form.consent.error
   return e
 }
 
-async function send(values: Values) {
+/** Envia para a API (api/server.mjs → POST /api/inscricao). `honeypot` = campo invisível que só robôs preenchem. */
+async function send(values: Values, honeypot: string) {
   const params = new URLSearchParams(window.location.search)
-  const payload = new URLSearchParams({
+  const payload: Record<string, string | boolean> = {
     nome: values.name.trim(),
     email: values.email.trim(),
     whatsapp: values.whatsapp,
@@ -63,15 +67,18 @@ async function send(values: Values) {
     especialidade: values.specialty.trim(),
     faturamento: values.revenue,
     pagina: window.location.href,
-  })
-  UTM_KEYS.forEach((key) => payload.set(key, params.get(key) ?? ''))
-
-  if (isPending(CONFIG.FORM_ENDPOINT)) {
-    console.warn('[LeadModal] FORM_ENDPOINT pendente — envio simulado:', Object.fromEntries(payload))
-    return
+    consentimento: values.consent,
+    politica_versao: PRIVACY.version,
+    empresa: honeypot,
   }
-  // Apps Script não devolve CORS: no-cors envia sem preflight (a resposta fica opaca)
-  await fetch(CONFIG.FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: payload })
+  UTM_KEYS.forEach((key) => (payload[key] = params.get(key) ?? ''))
+
+  const res = await fetch(CONFIG.FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  if (!res.ok) throw new Error(`HTTP ${res.status}`)
 }
 
 const inputClass =
@@ -112,7 +119,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
     }
   }, [open])
 
-  const update = (field: Field, value: string) => {
+  const update = <K extends Field>(field: K, value: Values[K]) => {
     const next = { ...values, [field]: value }
     setValues(next)
     if (submitted) setErrors(validate(next))
@@ -130,8 +137,9 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
     }
 
     setStatus('sending')
+    const honeypot = new FormData(event.currentTarget).get('empresa')
     try {
-      await send(values)
+      await send(values, typeof honeypot === 'string' ? honeypot : '')
     } catch {
       setStatus('error')
       return
@@ -262,6 +270,39 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
                 <TbChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-md size-5 -translate-y-1/2 text-heading" />
               </div>
               {errorFor('revenue')}
+            </div>
+
+            <div>
+              <label className="flex cursor-pointer items-start gap-sm text-meta text-pretty text-heading">
+                <input
+                  type="checkbox"
+                  checked={values.consent}
+                  onChange={(e) => update('consent', e.target.checked)}
+                  className="mt-[3px] size-5 shrink-0 cursor-pointer accent-accent"
+                  {...a11y('consent')}
+                />
+                <span>
+                  {form.consent.before}
+                  <a
+                    href={CONFIG.PRIVACY_URL}
+                    target="_blank"
+                    rel="noopener"
+                    className="font-semibold text-accent underline underline-offset-2 hover:text-accent-hover"
+                  >
+                    {form.consent.link}
+                  </a>
+                  {form.consent.after}
+                </span>
+              </label>
+              {errorFor('consent')}
+            </div>
+
+            {/* Honeypot: fora da tela e da navegação por teclado — só robôs preenchem */}
+            <div aria-hidden="true" className="absolute -left-[9999px] size-px overflow-hidden">
+              <label>
+                Empresa
+                <input type="text" name="empresa" tabIndex={-1} autoComplete="off" defaultValue="" />
+              </label>
             </div>
 
             {status === 'error' && (

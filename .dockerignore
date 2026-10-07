@@ -3,3 +3,5 @@ dist
 .git
 .claude
 *.log
+api/node_modules
+api/.env

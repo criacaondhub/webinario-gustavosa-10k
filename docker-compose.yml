@@ -1,5 +1,12 @@
 version: "3.7"
 
+# Protocolo 10K — https://dr.gustavosa.com.br/protocolo-10k
+# Primeiro deploy (secrets e verificação): api/README.md
+#
+#   /protocolo-10k        → gustavosa-protocolo-10k      (nginx: LP, /obrigado, /politica-de-privacidade, /dash)
+#   /protocolo-10k/api/*  → gustavosa-protocolo-10k-api  (inscrições + dados do /dash)
+#                             └── db (Postgres, rede interna) ← backup
+
 services:
   gustavosa-protocolo-10k:
     image: gustavosa-protocolo-10k:latest
@@ -14,15 +21,142 @@ services:
           - node.role == manager
       labels:
         - traefik.enable=true
-        # Só a subpasta /protocolo-10k vai para este container; o resto de dr.gustavosa.com.br segue para onde já está
+        # Só a subpasta /protocolo-10k vai para este container; o resto de dr.gustavosa.com.br segue para onde já está.
+        # Prioridade explícita (padrão dos outros stacks do domínio): sem ela o Traefik decide pelo comprimento da regra.
         - traefik.http.routers.gustavosa-protocolo-10k.rule=Host(`dr.gustavosa.com.br`) && PathPrefix(`/protocolo-10k`)
         - traefik.http.routers.gustavosa-protocolo-10k.entrypoints=websecure
         - traefik.http.routers.gustavosa-protocolo-10k.tls.certresolver=letsencryptresolver
         - traefik.http.routers.gustavosa-protocolo-10k.service=gustavosa-protocolo-10k
+        - traefik.http.routers.gustavosa-protocolo-10k.priority=1000
         - traefik.http.services.gustavosa-protocolo-10k.loadbalancer.server.port=80
         - traefik.http.services.gustavosa-protocolo-10k.loadbalancer.passHostHeader=true
+
+  # API (pasta api/): recebe o formulário e serve os dados do /dash
+  gustavosa-protocolo-10k-api:
+    image: gustavosa-protocolo-10k-api:latest
+    build: ./api
+    environment:
+      NODE_ENV: production
+      PGHOST: db
+      PGUSER: protocolo10k
+      PGDATABASE: protocolo10k
+      PGPASSWORD_FILE: /run/secrets/protocolo10k_db_password
+      DASH_USER: nd-protocolo
+      DASH_PASSWORD_HASH_FILE: /run/secrets/protocolo10k_dash_password_hash
+      DASH_SESSION_SECRET_FILE: /run/secrets/protocolo10k_session_secret
+    secrets:
+      - protocolo10k_db_password
+      - protocolo10k_dash_password_hash
+      - protocolo10k_session_secret
+    # interna para falar com o banco; GustavoSaNet para o Traefik
+    networks:
+      - GustavoSaNet
+      - interna
+    deploy:
+      mode: replicated
+      # Uma réplica só: os limites de tentativas (formulário e login) vivem na memória do processo
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - traefik.enable=true
+        # /protocolo-10k/api vai direto para a API — prioridade acima da do site (1000),
+        # senão o PathPrefix do site captura o /api
+        - traefik.http.routers.gustavosa-protocolo-10k-api.rule=Host(`dr.gustavosa.com.br`) && PathPrefix(`/protocolo-10k/api`)
+        - traefik.http.routers.gustavosa-protocolo-10k-api.entrypoints=websecure
+        - traefik.http.routers.gustavosa-protocolo-10k-api.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.gustavosa-protocolo-10k-api.service=gustavosa-protocolo-10k-api
+        - traefik.http.routers.gustavosa-protocolo-10k-api.priority=2000
+        # Remove /protocolo-10k (a API atende em /api/...) e informa o prefixo em X-Forwarded-Prefix,
+        # que a API usa no Path do cookie de sessão
+        - traefik.http.routers.gustavosa-protocolo-10k-api.middlewares=protocolo-10k-api-stripprefix
+        - traefik.http.middlewares.protocolo-10k-api-stripprefix.stripprefix.prefixes=/protocolo-10k
+        - traefik.http.services.gustavosa-protocolo-10k-api.loadbalancer.server.port=3001
+        # A API está em duas redes; sem isto o Traefik pode tentar alcançá-la pela interna, que ele não enxerga
+        - traefik.docker.network=GustavoSaNet
+        - traefik.swarm.network=GustavoSaNet
+
+  # Postgres. Só na rede interna e sem porta publicada: de fora, ninguém alcança o banco — só a API e o backup.
+  db:
+    # Digest fixo (o mesmo do selfmedclub): com a tag flutuante, o stack deploy re-resolve 17-alpine a cada
+    # deploy e pode recriar o banco quando o Docker Hub republica a imagem. Atualizar o Postgres é decisão explícita.
+    image: postgres:17-alpine@sha256:f02121de6f74d30d8a94cd1d9584125e2178d7e6c377d8130112d4e52d867995
+    environment:
+      POSTGRES_USER: protocolo10k
+      POSTGRES_DB: protocolo10k
+      POSTGRES_PASSWORD_FILE: /run/secrets/protocolo10k_db_password
+    secrets:
+      - protocolo10k_db_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - interna
+    deploy:
+      mode: replicated
+      replicas: 1
+      # O volume é local ao nó: o banco não pode trocar de máquina
+      placement:
+        constraints:
+          - node.role == manager
+
+  # Backup diário no volume "backups", guardando 7 dias. Os antigos só são apagados depois de um backup
+  # novo dar certo. ($$ = $ literal no compose.)
+  backup:
+    image: postgres:17-alpine@sha256:f02121de6f74d30d8a94cd1d9584125e2178d7e6c377d8130112d4e52d867995
+    environment:
+      PGHOST: db
+      PGUSER: protocolo10k
+      PGDATABASE: protocolo10k
+    secrets:
+      - protocolo10k_db_password
+    volumes:
+      - backups:/backups
+    networks:
+      - interna
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -o pipefail
+        export PGPASSWORD="$$(cat /run/secrets/protocolo10k_db_password)"
+        while true; do
+          f="/backups/protocolo10k-$$(date +%Y-%m-%d_%H%M).sql.gz"
+          if pg_dump --no-owner | gzip > "$$f.tmp"; then
+            mv "$$f.tmp" "$$f"
+            echo "[backup] ok: $$f"
+            find /backups -name 'protocolo10k-*.sql.gz' -mtime +6 -delete
+            sleep 86400
+          else
+            rm -f "$$f.tmp"
+            echo "[backup] falhou; nova tentativa em 5 min"
+            sleep 300
+          fi
+        done
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
 
 networks:
   GustavoSaNet:
     name: GustavoSaNet
+    external: true
+  # Só entre api, db e backup. internal = sem saída para a internet.
+  interna:
+    driver: overlay
+    internal: true
+
+volumes:
+  pgdata:
+  backups:
+
+# Criados à mão na VPS antes do primeiro deploy — ver api/README.md
+secrets:
+  protocolo10k_db_password:
+    external: true
+  protocolo10k_dash_password_hash:
+    external: true
+  protocolo10k_session_secret:
     external: true

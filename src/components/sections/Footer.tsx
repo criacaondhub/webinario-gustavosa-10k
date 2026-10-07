@@ -1,8 +1,8 @@
-import { CONTENT } from '@/config/content'
+import { CONFIG, CONTENT } from '@/config/content'
 import { Logo } from '@/components/ui/Logo'
 
 export function Footer() {
-  const { info, credit } = CONTENT.footer
+  const { info, privacy, credit } = CONTENT.footer
 
   return (
     <footer className="bg-accent text-light">
@@ -21,7 +21,15 @@ export function Footer() {
           </a>
         </p>
 
-        <p className="text-meta text-light/75 lg:text-right">{info}</p>
+        <div className="text-meta text-light/75 lg:text-right">
+          <p>{info}</p>
+          <a
+            href={CONFIG.PRIVACY_URL}
+            className="inline-flex min-h-11 items-center rounded-sm text-light underline underline-offset-4 transition-colors duration-200 ease-out hover:text-light/75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light"
+          >
+            {privacy}
+          </a>
+        </div>
       </div>
     </footer>
   )

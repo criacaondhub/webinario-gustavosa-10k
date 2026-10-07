@@ -7,6 +7,8 @@ Allow: /protocolo-10k/
 
 # Bloquear rotas com dados pessoais (LGPD)
 Disallow: /protocolo-10k/obrigado
+Disallow: /protocolo-10k/dash
+Disallow: /protocolo-10k/api/
 Disallow: /protocolo-10k/confirmacao
 Disallow: /*?nome=*
 Disallow: /*?email=*

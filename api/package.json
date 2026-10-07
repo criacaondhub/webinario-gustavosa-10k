@@ -1,0 +1,19 @@
+{
+  "name": "protocolo-10k-api",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Recebe as inscrições do pop-up da LP Protocolo 10K, grava no Postgres e serve o /dash",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch --env-file-if-exists=.env server.mjs",
+    "hash-password": "node scripts/hash-password.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  }
+}

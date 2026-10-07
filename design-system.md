@@ -1,6 +1,6 @@
 # Design System — Protocolo 10K · Dr. Gustavo Sá
 
-Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Todos os CTAs abrem o pop-up de inscrição (`LeadModal`), que envia os dados para uma Planilha Google via Apps Script (`CONFIG.FORM_ENDPOINT`, ver `google-apps-script.gs`) e redireciona para a página de obrigado (`CONFIG.THANK_YOU_URL` → `obrigado/index.html` + `src/obrigado.tsx`, seção `ThankYou`, fundo `banner-hero_Obrigado.webp`, CTA para o grupo VIP do WhatsApp `CONFIG.GROUP_URL`).
+Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Todos os CTAs abrem o pop-up de inscrição (`LeadModal`), que envia os dados para a API própria (`api/`, Postgres — `CONFIG.FORM_ENDPOINT`), exige o aceite da Política de Privacidade (`politica-de-privacidade/index.html` + `src/config/privacy.ts`) e redireciona para a página de obrigado (`CONFIG.THANK_YOU_URL` → `obrigado/index.html` + `src/obrigado.tsx`, seção `ThankYou`, fundo `banner-hero_Obrigado.webp`, CTA para o grupo VIP do WhatsApp `CONFIG.GROUP_URL`). Inscrições no painel `/protocolo-10k/dash/` (`dash/index.html` + `src/components/dash/`, login via API — ver `api/README.md`).
 
 Todos os tokens abaixo estão declarados no `@theme {}` de `src/index.css` e viram classes utilitárias do Tailwind v4 (ex.: `bg-background`, `text-heading`, `px-gutter`, `max-w-page`, `text-display`).
 
@@ -21,6 +21,8 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 | `accent-hover` | `#17318A` | `bg-accent-hover` / `text-accent-hover` | Azul mais escuro (reserva; o hover do CTA é escala, não cor) |
 | `light` | `#F0EDE4` | `text-light` | Tudo que era branco: texto do CTA, texto e link do rodapé, logo negativo |
 | `secondary` | `#1E3FA8` | `bg-secondary` | Marcadores (círculo do check) |
+| `whatsapp` | `#25D366` | `bg-whatsapp` | CTA do grupo VIP na página de obrigado (`CtaButton variant="whatsapp"`), com texto e ícones em `heading` — 6,1:1 (o texto `light` daria 1,7:1) |
+| `alert` | `#D92D20` | `bg-alert` | Barra de vagas preenchidas do Hero — 4,1:1 sobre `background`, 3,3:1 sobre o trilho |
 
 > Hierarquia entre `text`, `heading` e `muted` (todos grafite) vem de **tamanho e peso**, não de cor.
 

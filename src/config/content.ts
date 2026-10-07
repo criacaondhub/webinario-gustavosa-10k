@@ -1,8 +1,8 @@
 export const CONFIG = {
-  // ⚠️ PENDENTE — preencher antes do deploy
   GROUP_URL: 'https://chat.whatsapp.com/CYDohqRxTJQGYCaaMTarBv', // grupo de WhatsApp do webinário
-  FORM_ENDPOINT: '⚠️ URL do Web App do Google Apps Script', // recebe o formulário do pop-up — ver google-apps-script.gs
+  FORM_ENDPOINT: `${import.meta.env.BASE_URL}api/inscricao`, // API própria (pasta api/) → Postgres; leads no /dash
   THANK_YOU_URL: `${import.meta.env.BASE_URL}obrigado/`, // destino depois do envio do formulário — obrigado/index.html (relativo: funciona no localhost e em produção)
+  PRIVACY_URL: `${import.meta.env.BASE_URL}politica-de-privacidade/`, // politica-de-privacidade/index.html
   DOMAIN: 'https://dr.gustavosa.com.br/protocolo-10k', // espelhado em .env.production (VITE_SITE_URL) e no base do vite.config.ts
   EVENT_DATE: '20 de Outubro',
 
@@ -119,6 +119,12 @@ export const CONTENT = {
       choice: 'Escolha uma opção.',
       submit: 'Não conseguimos enviar agora. Confira sua conexão e tente de novo.',
     },
+    consent: {
+      before: 'Li e concordo com a ',
+      link: 'Política de Privacidade',
+      after: ' e autorizo o contato por e-mail e WhatsApp sobre o webinário e conteúdos do Dr. Gustavo Sá.',
+      error: 'Para se inscrever, aceite a Política de Privacidade.',
+    },
     submit: 'Quero participar do Webinário',
     sending: 'Enviando…',
     close: 'Fechar',
@@ -135,6 +141,7 @@ export const CONTENT = {
   },
   footer: {
     info: `${CONFIG.EVENT_DATE} · ${CONFIG.EVENT_TIME} · ${CONFIG.EVENT_PLATFORM}`,
+    privacy: 'Política de Privacidade',
     credit: { prefix: 'Desenvolvido por: ', name: 'Nova Dimensão', url: 'https://med.novadimensaohub.com.br' },
   },
 } as const

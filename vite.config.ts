@@ -9,10 +9,23 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
-      // Duas páginas: a LP e a página de obrigado (/protocolo-10k/obrigado/)
+      // Páginas: a LP, o obrigado, a política de privacidade e o painel de inscrições (/protocolo-10k/<pasta>/)
       input: {
         main: path.resolve(import.meta.dirname, 'index.html'),
         obrigado: path.resolve(import.meta.dirname, 'obrigado/index.html'),
+        privacidade: path.resolve(import.meta.dirname, 'politica-de-privacidade/index.html'),
+        dash: path.resolve(import.meta.dirname, 'dash/index.html'),
+      },
+    },
+  },
+  // API local (cd api && npm run dev). Em produção o Traefik manda /protocolo-10k/api direto para a API,
+  // removendo /protocolo-10k e informando-o em X-Forwarded-Prefix (Path do cookie de sessão) — aqui imita isso.
+  server: {
+    proxy: {
+      '/protocolo-10k/api': {
+        target: 'http://localhost:3001',
+        rewrite: (p) => p.replace(/^\/protocolo-10k/, ''),
+        headers: { 'X-Forwarded-Prefix': '/protocolo-10k' },
       },
     },
   },

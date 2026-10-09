@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void
+    dataLayer?: unknown[]
   }
 }
 

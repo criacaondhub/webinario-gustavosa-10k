@@ -145,6 +145,10 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
       return
     }
     window.fbq?.('track', 'Lead')
+    // Evento exclusivo deste projeto: o container GTM é compartilhado com os
+    // outros projetos do domínio, e o nome único evita disparo cruzado.
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({ event: 'protocolo10k_lead' })
     window.location.assign(CONFIG.THANK_YOU_URL)
   }
 

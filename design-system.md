@@ -1,6 +1,6 @@
 # Design System — Protocolo 10K · Dr. Gustavo Sá
 
-Landing page do webinário gratuito **Protocolo 10K** (20 de outubro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Todos os CTAs abrem o pop-up de inscrição (`LeadModal`), que envia os dados para a API própria (`api/`, Postgres — `CONFIG.FORM_ENDPOINT`), exige o aceite da Política de Privacidade (`politica-de-privacidade/index.html` + `src/config/privacy.ts`) e redireciona para a página de obrigado (`CONFIG.THANK_YOU_URL` → `obrigado/index.html` + `src/obrigado.tsx`, seção `ThankYou`, fundo `banner-hero_Obrigado.webp`, CTA para o grupo VIP do WhatsApp `CONFIG.GROUP_URL`). Inscrições no painel `/protocolo-10k/dash/` (`dash/index.html` + `src/components/dash/`, login via API — ver `api/README.md`).
+Landing page do webinário gratuito **Protocolo 10K** (25 de novembro · 19h30 · Google Meet). Estrutura espelhada da LP de referência `escola.endometriose.med.br/webinario`: Hero (texto à esquerda, foto à direita) → Quem vai te mostrar isso (foto à esquerda, texto à direita) → Rodapé. Todos os CTAs abrem o pop-up de inscrição (`LeadModal`), que envia os dados para a API própria (`api/`, Postgres — `CONFIG.FORM_ENDPOINT`), exige o aceite da Política de Privacidade (`politica-de-privacidade/index.html` + `src/config/privacy.ts`) e redireciona para a página de obrigado (`CONFIG.THANK_YOU_URL` → `obrigado/index.html` + `src/obrigado.tsx`, seção `ThankYou`, fundo `banner-hero_Obrigado.webp`, CTA para o grupo VIP do WhatsApp `CONFIG.GROUP_URL`). Inscrições no painel `/protocolo-10k/dash/` (`dash/index.html` + `src/components/dash/`, login via API — ver `api/README.md`).
 
 Todos os tokens abaixo estão declarados no `@theme {}` de `src/index.css` e viram classes utilitárias do Tailwind v4 (ex.: `bg-background`, `text-heading`, `px-gutter`, `max-w-page`, `text-display`).
 
@@ -27,7 +27,7 @@ Valores definidos pelo usuário em `tokens-cor.txt`.
 > Hierarquia entre `text`, `heading` e `muted` (todos grafite) vem de **tamanho e peso**, não de cor.
 
 ### Destaques do H1
-Definido pelo usuário: "10 mil seguidores até o fim do ano" em **700 `accent`** (azul, 7,69:1 sobre `background`).
+Definido pelo usuário: "10 mil seguidores" em **700 `accent`** (azul, 7,69:1 sobre `background`).
 
 **Contrastes medidos (WCAG)**
 
@@ -148,7 +148,7 @@ Publicação em subpasta: **https://dr.gustavosa.com.br/protocolo-10k** (`base: 
 | `logo-protocolo-horizontal.svg` | Hero (topo) | Acima da faixa de data, alinhado à esquerda no desktop e centralizado no mobile; largura `clamp(12rem, 24vw, 19rem)` | vetor | ✅ |
 | `logo-protocolo-horizontal-negativo.svg` | Rodapé | Coluna esquerda, `w-[13rem]` | vetor | ✅ |
 | `banner-hero.webp` | Hero (fundo) | **Banner full** fornecido pelo cliente (2304×1296, já otimizado). ≥1280px (`xl`): fundo da seção inteira (`absolute inset-0`, `object-cover`), texto sobreposto no lado claro à esquerda, nota glass "Dr. Gustavo Sá · Nutrólogo · 280 mil seguidores" na base da coluna direita. <1280px: imagem no topo (abaixo de 640px usa `banner-hero-mobile.webp` 1080×747, sem recorte; `sm`–`xl` usa o banner desktop em `aspect-[16/9]`) com fade inferior para `background`, conteúdo empilhado e centralizado abaixo | 2304 × 1296 px (16:9) | ✅ |
-| `OG-BANNER.webp` | Compartilhamento (`og:image` / `twitter:image` no `index.html`) | URL absoluta via `VITE_SITE_URL` (`.env.production`) | 1200 × 630 px | ✅ |
+| `OG-BANNER_V3.webp` | Compartilhamento (`og:image` / `twitter:image` no `index.html`) | URL absoluta via `VITE_SITE_URL` (`.env.production`) | 1200 × 630 px | ✅ |
 | `Imagem-02.webp` | Dobra 2 (coluna esquerda) | `object-cover object-top`, altura total da seção, sangra até a borda esquerda | 1200 × 1400 px (6:7) | ✅ |
 
 **Regras**

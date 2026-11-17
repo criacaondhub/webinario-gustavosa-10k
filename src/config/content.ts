@@ -4,7 +4,7 @@ export const CONFIG = {
   THANK_YOU_URL: `${import.meta.env.BASE_URL}obrigado/`, // destino depois do envio do formulário — obrigado/index.html (relativo: funciona no localhost e em produção)
   PRIVACY_URL: `${import.meta.env.BASE_URL}politica-de-privacidade/`, // politica-de-privacidade/index.html
   DOMAIN: 'https://dr.gustavosa.com.br/protocolo-10k', // espelhado em .env.production (VITE_SITE_URL) e no base do vite.config.ts
-  EVENT_DATE: '20 de Outubro',
+  EVENT_DATE: '25 de Novembro',
 
   COMPANY_NAME: 'Dr. Gustavo Sá',
   EVENT_NAME: 'Protocolo 10K',
@@ -68,7 +68,6 @@ export const CONTENT = {
     headline: [
       { text: 'Aprenda como ganhar ' },
       { text: '10 mil seguidores', emphasis: 'accent' },
-      { text: ' até o fim do ano', emphasis: 'accent' },
       { text: ' mesmo que você tenha pouco tempo, poucos seguidores e até mesmo, pouca familiaridade com a produção de conteúdo.' },
     ] as HeadlinePart[],
     intro:
@@ -132,7 +131,7 @@ export const CONTENT = {
   thankYou: {
     headline: [
       { text: 'Você conseguiu garantir uma das vagas limitadas no nosso Webinário Exclusivo para aprender a como ganhar ' },
-      { text: '10 mil seguidores até o final do ano', emphasis: 'accent' },
+      { text: '10 mil seguidores', emphasis: 'accent' },
       { text: '.' },
     ] as HeadlinePart[],
     intro: ['Clique no botão abaixo e entre no Grupo Vip para', 'ter acesso a todas as informações e o link da aula.'], // quebra de linha a partir do tablet

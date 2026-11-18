@@ -64,7 +64,7 @@ export function Hero() {
             })}
           </motion.ul>
 
-          <motion.h1 variants={item} className="mb-lg text-display text-balance text-heading leading-[1.2] xl:-mr-12 xl:text-[2.375rem] xl:text-wrap">
+          <motion.h1 variants={item} className="mb-lg text-display max-sm:text-[length:calc(var(--text-display)-6px)] text-balance text-heading leading-[1.2] xl:-mr-12 xl:text-[2.375rem] xl:text-wrap">
             {hero.headline.map(({ text, emphasis }) =>
               emphasis ? (
                 <span key={text} className={emphasis === 'accent' ? 'font-bold text-accent' : 'highlight'}>
@@ -77,11 +77,11 @@ export function Hero() {
           </motion.h1>
 
           <motion.h2 variants={item} className="mx-auto mb-[clamp(1.75rem,3vw,2.5rem)] max-w-[54ch] text-lead tracking-[-0.02em] text-pretty xl:mx-0">
-            {hero.intro}
+            {hero.intro.map(({ text, emphasis }) => (emphasis ? <strong key={text} className="font-bold">{text}</strong> : text))}
           </motion.h2>
 
           <motion.div variants={item} className="flex justify-center xl:justify-start">
-            <CtaButton label={hero.cta} />
+            <CtaButton label={hero.cta} className="whitespace-normal text-balance text-center" />
           </motion.div>
 
           <motion.div variants={item} className="mx-auto mt-md w-full max-w-[27rem] xl:mx-0">
